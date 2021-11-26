@@ -9,13 +9,8 @@ PALETA DE COLORES:
 09BC8A - VERDE CHILLON FUERTE
 */
 
-body {
+html,body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  /* overflow-x: hidden; */
   background-color: #172a3a;
-  /* display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto; */
 }
