@@ -1,7 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  
+
+/* 
+PALETA DE COLORES:
+75DDDD - TURQUESA
+508991 - VERDE CLARO
+172A3A - OSCURO
+004346 - VERDE OSCURO
+09BC8A - VERDE CHILLON FUERTE
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow-x: hidden; */
+  background-color: #172a3a;
+  /* display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto; */
 }
