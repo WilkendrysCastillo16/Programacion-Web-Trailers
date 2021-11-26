@@ -1,0 +1,46 @@
+.content {
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.example-card {
+  margin: 20px;
+  padding: 30px;
+  max-width: 200px;
+  background-color: #004346;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.example-card:hover {
+  transform: translateY(-7px);
+}
+
+.header-card {
+  text-align: center;
+  color: #75dddd;
+}
+
+/* CENTRA IMAGEN DEL CARD Y TAMANO IGUAL A TODAS */
+.example-card img {
+  display: block;
+  margin: auto;
+  width: 170px;
+  height: 270px;
+}
+
+.rating-star {
+  text-align: center;
+  align-items: center;
+}
+
+.star-value {
+  color: #fcbf49;
+}
+
+.ratep {
+  color: #75dddd;
+  text-align: center;
+  align-items: center;
+}

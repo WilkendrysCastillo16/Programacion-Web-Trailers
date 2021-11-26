@@ -1,3 +1,4 @@
+import { PrincipalComponent } from './modules/home/pages/principal/principal.component';
 import { DetallesComponent } from './modules/home/components/detalles/detalles.component';
 import { LoginComponent } from './modules/home/pages/login/login.component';
 import { NgModule, Component } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   //{path:'prueba',component:NavComponent,canActivate:[GuardfirstGuard]},
   //{path:'detalles',component:DetallesComponent,canActivate:[GuardfirstGuard]},
   {path:'detalles',component:DetallesComponent},
+  {path:'principal',component:PrincipalComponent},
   {path:'**',redirectTo:'login'}
 ];
 
