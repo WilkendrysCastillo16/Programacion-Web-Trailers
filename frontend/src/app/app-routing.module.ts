@@ -1,4 +1,6 @@
 import { PrincipalComponent } from './modules/home/pages/principal/principal.component';
+import { EquipoComponent } from './modules/home/pages/equipo/equipo.component';
+import { HeaderComponent } from './core/header/header.component';
 import { DetallesComponent } from './modules/home/components/detalles/detalles.component';
 import { LoginComponent } from './modules/home/pages/login/login.component';
 import { NgModule, Component } from '@angular/core';
@@ -14,6 +16,8 @@ const routes: Routes = [
   //{path:'detalles',component:DetallesComponent,canActivate:[GuardfirstGuard]},
   {path:'detalles',component:DetallesComponent},
   {path:'principal',component:PrincipalComponent},
+  {path:'header',component:HeaderComponent},
+  {path:'equipo', component:EquipoComponent},
   {path:'**',redirectTo:'login'}
 ];
 

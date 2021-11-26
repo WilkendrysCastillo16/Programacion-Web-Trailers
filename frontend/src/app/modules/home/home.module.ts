@@ -4,12 +4,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { MaterialModule } from './material/material.module';
+import { EquipoComponent } from './pages/equipo/equipo.component';
+
+
 
 @NgModule({
   declarations: [
     LoginComponent,
     DetallesComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    EquipoComponent
   ],
   imports: [
     CommonModule,
