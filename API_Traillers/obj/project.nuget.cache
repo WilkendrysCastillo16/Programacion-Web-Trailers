@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8PtBeSzPd/r4+lZgNk+Xdu4csPyGthiD1oXv0GMUvQLHkSsRD7Trq2uo4QoTR31cCi/ChyCms0EWNzPs8pqJ6g==",
+  "dgSpecHash": "eDo1Sg97YKxNzgj7LIEBjaEYFSC6BUqvwW7l8XU11awO2Ma7OyY3UAfrCQMa9PTzrN2VAOlLW9htWEeX81gjmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jose Miguel Upia\\source\\repos\\WilkendrysCastillo16\\Programacion-Web-Trailers\\API_Traillers\\API_Traillers.csproj",
+  "projectFilePath": "C:\\Users\\Jose Miguel Upia\\Source\\Repos\\WilkendrysCastillo16\\Programacion-Web-Trailers\\API_Traillers\\API_Traillers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jose Miguel Upia\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Jose Miguel Upia\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
