@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+  }
+
 
   ngOnInit(): void {
+
+    const toggleButton = document.getElementsByClassName('toggle-button')[0]
+    const navbarActive = document.getElementsByClassName('navbar-links')[0]
+
+    
+    toggleButton.addEventListener('click', () => {
+      navbarActive.classList.toggle('active')
+    })
+
+
   }
 
 }
