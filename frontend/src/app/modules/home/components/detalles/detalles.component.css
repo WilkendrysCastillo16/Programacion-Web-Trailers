@@ -1,0 +1,43 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+/* .container-dialog {
+  background-color: #172a3a;
+} */
+
+iframe {
+  display: block;
+  margin: auto;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+h3 {
+  font-size: large;
+}
+
+h2,
+h3 {
+  color: #09bc8a;
+  text-align: center;
+}
+
+p {
+  color: #508991;
+  text-align: center;
+}
+
+.star-value {
+  color: #fcbf49;
+}
+
+.cont-button {
+  align-items: center;
+}
+
+.btn-color {
+  background-color: #09bc8a;
+}
