@@ -1,25 +1,24 @@
-h1{
+h1 {
   text-align: center;
   color: #1cc7d0;
 }
 
-.contenedor{
+.contenedor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: 80px auto;
   padding: 20px;
-
 }
-::selection{
+::selection {
   color: #fff;
   background: #1cc7d0;
 }
-.wrapper{
+.wrapper {
   height: 400px;
   width: 320px;
   perspective: 1000px;
 }
-.wrapper .card{
+.wrapper .card {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -29,45 +28,45 @@ h1{
   transform: translateY(0deg);
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
-.wrapper:hover > .front-face{
+.wrapper:hover > .front-face {
   transform: rotateY(-180deg);
 }
-.wrapper .card img{
+.wrapper .card img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-.wrapper .back-face{
+.wrapper .back-face {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   transform: rotateY(180deg);
 }
-.wrapper:hover > .back-face{
+.wrapper:hover > .back-face {
   transform: rotateY(0deg);
 }
-.wrapper .back-face img{
+.wrapper .back-face img {
   height: 150px;
   width: 150px;
   padding: 5px;
   border-radius: 50%;
-  background: #172A3A;
+  background: #172a3a;
 }
-.wrapper .back-face .info{
+.wrapper .back-face .info {
   text-align: center;
 }
-.back-face .info .title{
+.back-face .info .title {
   font-size: 30px;
   font-weight: 500;
 }
-.back-face ul{
+.back-face ul {
   display: flex;
 }
-.back-face ul a{
+.back-face ul a {
   display: block;
   height: 40px;
   width: 40px;
@@ -77,11 +76,11 @@ h1{
   line-height: 38px;
   border: 2px solid transparent;
   border-radius: 50%;
-  background: #172A3A;
+  background: #172a3a;
   transition: all 0.5s ease;
 }
-.back-face ul a:hover{
-  color: #75DDDD;
-  border-color: #75DDDD;
+.back-face ul a:hover {
+  color: #75dddd;
+  border-color: #75dddd;
   background: linear-gradient(375deg, transparent, transparent);
 }
