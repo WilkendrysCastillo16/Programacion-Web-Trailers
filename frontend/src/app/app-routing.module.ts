@@ -1,3 +1,4 @@
+import { CrudTrailersComponent } from './modules/home/pages/crud-trailers/crud-trailers.component';
 import { PrincipalComponent } from './modules/home/pages/principal/principal.component';
 import { EquipoComponent } from './modules/home/pages/equipo/equipo.component';
 //import { HeaderComponent } from './core/header/header.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'principal',component:PrincipalComponent},
   //{path:'header',component:HeaderComponent},
   {path:'equipo', component:EquipoComponent},
+  {path:'trailers', component:CrudTrailersComponent},
   {path:'**',redirectTo:'login'}
 ];
 

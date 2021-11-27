@@ -1,0 +1,139 @@
+<div class="container-crud">
+    <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" [optional]="isOptional">
+            <form [formGroup]="firstFormGroup" class="form-actores">
+                <ng-template matStepLabel class="titulo-actores">A&ntilde;adir Actores</ng-template>
+                <table class="example-full-width" cellspacing="5">
+                    <tr>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label class="lbl-nombre">Nombre</mat-label>
+                                <input matInput placeholder="Ex. Elian">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label class="lbl-apellido">Apellido</mat-label>
+                                <input matInput placeholder="Ex. Germosen">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>A&ntilde;adir Trailler</ng-template>
+                <form class="example-form">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Titulo</mat-label>
+                                    <input matInput formControlName="title" placeholder="Ex. La casa de papel" required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Director</mat-label>
+                                    <input matInput formControlName="director"
+                                        placeholder="Ex. Álex Pina, Sonia Martínez, Jesús Colmenar, Esther Martínez Lobato y Nacho Manubens"
+                                        required>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Rese&ntilde;a</mat-label>
+                                    <textarea matInput formControlName="review"
+                                        placeholder="Ex. La estética de la serie fue desarrollada por el creador Álex Pina, el director Jesús Colmenar y el director de fotografía Migue Amoedo, según La Vanguardia ''El trío artístico más prolífico de los últimos años'."
+                                        required></textarea>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Portada</mat-label>
+                                    <input matInput formControlName="cover"
+                                        placeholder="Ex. https://pinimg.com/564x/d5/d4/39/d5d439da0a74058366f9e4df25db5fa2.jpg"
+                                        required>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Trailer</mat-label>
+                                    <input matInput formControlName="link"
+                                        placeholder="Ex. https://www.youtube.com/embed/7dWs0_yqm-0" required>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <!-- <td>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Actores</mat-label>
+                                    <mat-select [formControl]="actores" multiple>
+                                        <mat-select-trigger>
+                                            {{actores.value ? actores.value[0] : ''}}
+                                            <span *ngIf="actores.value?.length > 1"
+                                                class="example-additional-selection">
+                                                (+{{actores.value.length - 1}} {{actores.value?.length === 2 ? 'other'
+                                                : 'others'}})
+                                            </span>
+                                        </mat-select-trigger>
+                                        <mat-option *ngFor="let actor of actoresList" [value]="actor">{{actor}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td> -->
+                            <td>
+                                <mat-form-field color="accent" appearance="fill">
+                                    <mat-label>Inherited calendar color</mat-label>
+                                    <input matInput [matDatepicker]="picker1">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <div class="example-label-container"
+                                    [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
+                                    <label id="example-name-label" class="example-name-label">Rating </label>
+                                    <!-- <label class="example-value-label">{{value}} </label> -->
+                                    <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
+                                    </mat-icon>
+                                </div>
+                                <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max"
+                                    [min]="min" [step]="step" [thumbLabel]="thumbLabel"
+                                    [tickInterval]="getSliderTickInterval()" [(ngModel)]="value" [vertical]="vertical"
+                                    aria-labelledby="example-name-label">
+                                </mat-slider>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Agregado</ng-template>
+            <p>Tu trailer ha sido agregado con exito a la aplicacion.</p>
+            <!-- <div>
+                <button mat-button matStepperPrevious>Back</button> -->
+            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+            <!-- </div> -->
+        </mat-step>
+    </mat-stepper>
+</div>

@@ -1,0 +1,67 @@
+.form-actores {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.form-actores .titulo-actores {
+  color: #09bc8a;
+}
+
+/* .mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  color: #09bc8a;
+} */
+
+/* .mat-stepper-horizontal {
+  margin-top: 8px;
+} */
+
+/* .mat-form-field {
+  margin-top: 5px;
+} */
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+.star-value {
+  color: #fcbf49;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.star-value {
+  color: #fcbf49;
+}
+
+.example-result-card h2 {
+  margin: 0 8px;
+}
+
+.example-result-card .example-label-container.example-label-horizontal {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px 16px;
+  max-width: 284px;
+}
+
+.example-result-card .example-label-container.example-label-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 68px;
+  height: 48px;
+}
+
+.example-result-card .example-value-label {
+  font-weight: 600;
+}

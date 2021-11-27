@@ -1,6 +1,9 @@
+import { DialogComponent } from './../../components/dialog/dialog.component';
+import { CrudTrailersComponent } from './../crud-trailers/crud-trailers.component';
 import { DetallesComponent } from './../../components/detalles/detalles.component';
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+//import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-principal',
@@ -18,7 +21,15 @@ export class PrincipalComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-
+  openAdmin(){
+    const dialogConfig= new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.width = "70%";
+    const dialogAdmin = this.dialog.open(CrudTrailersComponent,dialogConfig);
+    // const dialogAdmin = this.dialog.open(DialogComponent);
+  }
   ngOnInit(): void {
   }
   
