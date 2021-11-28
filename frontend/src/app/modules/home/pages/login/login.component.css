@@ -10,7 +10,11 @@
     overflow: hidden;
     background: #172A3A;
 }
+a{
+    text-decoration: none;
+    color: #75DDDD;
 
+}
 .login-container {
     height: 33.75em;
     width: 60em;

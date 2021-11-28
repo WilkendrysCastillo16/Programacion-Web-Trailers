@@ -20,7 +20,7 @@ const routes: Routes = [
   //{path:'header',component:HeaderComponent},
   {path:'equipo', component:EquipoComponent},
   {path:'trailers', component:CrudTrailersComponent},
-  {path:'**',redirectTo:'login'}
+  {path:'**',redirectTo:'principal', pathMatch:'full'}
 ];
 
 @NgModule({

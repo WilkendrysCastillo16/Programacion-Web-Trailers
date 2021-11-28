@@ -1,8 +1,10 @@
+import { HeaderComponent } from './../../../../core/header/header.component';
 import { DialogComponent } from './../../components/dialog/dialog.component';
 import { CrudTrailersComponent } from './../crud-trailers/crud-trailers.component';
 import { DetallesComponent } from './../../components/detalles/detalles.component';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+
 //import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({

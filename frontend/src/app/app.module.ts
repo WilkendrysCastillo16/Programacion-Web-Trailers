@@ -7,17 +7,15 @@ import { DirectivefirstDirective } from './shared/directives/directivefirst.dire
 import { PipefirstPipe } from './shared/pipes/pipefirst.pipe';
 
 import { HomeModule } from './modules/home/home.module';
-import { FooterComponent } from './core/footer/footer.component';//importamos el footer para su acceso
-import { HeaderComponent } from './core/header/header.component';//importamos el header para su acceso
+// import { FooterComponent } from './core/footer/footer.component';//importamos el footer para su acceso
+// import { HeaderComponent } from './core/header/header.component';//importamos el header para su acceso
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//de angular material
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivefirstDirective,
-    PipefirstPipe,
-    FooterComponent,
-    HeaderComponent
+    PipefirstPipe
   ],
   imports: [
     BrowserModule,
