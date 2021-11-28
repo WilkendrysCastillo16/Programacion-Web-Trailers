@@ -11,6 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { EquipoComponent } from './pages/equipo/equipo.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { CrudTrailersComponent } from './pages/crud-trailers/crud-trailers.component';
+import { HeaderComponent } from 'src/app/core/header/header.component';
+import { FooterComponent } from './../../core/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CrudTrailersComponent } from './pages/crud-trailers/crud-trailers.compo
     PrincipalComponent,
     EquipoComponent,
     DialogComponent,
-    CrudTrailersComponent
+    CrudTrailersComponent,
+    HeaderComponent,
+    FooterComponent
     // MatStepperModule,
     // MatDatepickerModule,
     // MatSelectModule,

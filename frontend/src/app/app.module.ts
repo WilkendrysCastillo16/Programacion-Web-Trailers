@@ -16,14 +16,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';/
     AppComponent,
     DirectivefirstDirective,
     PipefirstPipe,
-    FooterComponent,
-    HeaderComponent
+    // FooterComponent,
+    // HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HomeModule
+    // FooterComponent,
+    // HeaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
