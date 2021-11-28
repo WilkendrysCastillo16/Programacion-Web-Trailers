@@ -39,6 +39,12 @@ p {
   align-items: center;
 }
 
-.btn-color {
+/* .btn-home {
   background-color: #09bc8a;
+} */
+.btn-edit {
+  background-color: #fcbf49;
 }
+/* .btn-delete {
+  background-color: #09bc8a;
+} */

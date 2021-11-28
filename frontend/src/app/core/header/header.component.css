@@ -27,7 +27,7 @@
 .navbar-links ul {
   display: flex;
   margin: 0;
-  padding: 0;
+  padding-right: 15px;
 }
 
 .navbar-links li {

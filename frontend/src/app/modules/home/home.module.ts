@@ -35,4 +35,4 @@ import { FooterComponent } from './../../core/footer/footer.component';
   ],
   entryComponents:[CrudTrailersComponent]
 })
-export class HomeModule {}
+export class HomeModule { }

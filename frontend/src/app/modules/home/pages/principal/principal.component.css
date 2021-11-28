@@ -1,6 +1,12 @@
 .admin {
-  padding: 20px 10px 10px 0;
+  text-align: right;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
 }
+/* .btn-add{
+  padding-left: 900px;
+} */
 .admin button {
   /* position: fixed; */
   background-color: #09bc8a;
