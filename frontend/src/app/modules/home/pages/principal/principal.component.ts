@@ -24,12 +24,13 @@ export class PrincipalComponent implements OnInit {
     });
   }
   openAdmin(){
-    const dialogConfig= new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    dialogConfig.width = "70%";
-    const dialogAdmin = this.dialog.open(CrudTrailersComponent,dialogConfig);
+    // const dialogConfig= new MatDialogConfig();
+    // dialogConfig.disableClose = false;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.width = "70%";
+    // dialogConfig.width = "70%";
+    // const dialogAdmin = this.dialog.open(CrudTrailersComponent,dialogConfig);
+    const dialogAdmin = this.dialog.open(CrudTrailersComponent);
     // const dialogAdmin = this.dialog.open(DialogComponent);
   }
   ngOnInit(): void {
