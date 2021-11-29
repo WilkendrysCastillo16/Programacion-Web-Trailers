@@ -35,6 +35,8 @@ namespace API_Trailler.Data
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
+           
+
             modelBuilder.Entity<Actor>(entity =>
             {
                 entity.ToTable("Actor");

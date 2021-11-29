@@ -26,26 +26,26 @@ namespace API_Trailler.Controllers
             _responseDto = new ResponseDto();
         }
 
-        // GET: api/Traillers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Trailler>>> GetTraillers()
+        public async Task<ActionResult> GetTraillers()
         {
             try
             {
                 var listaTrailler = await _traillerServices.GetTraillers();
+
                 _responseDto.Result = listaTrailler;
                 _responseDto.Mensaje = "Lista de Trailler";
+
+                return Ok(listaTrailler);
             }
             catch (Exception ex)
             {
                 _responseDto.Correcto = false;
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+                return BadRequest(_responseDto);
             }
-
-            return Ok(_responseDto);
         }
 
-        // GET: api/Traillers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Trailler>> GetTrailler(int id)
         {
@@ -62,29 +62,6 @@ namespace API_Trailler.Controllers
             return Ok(_responseDto);
         }
 
-        // PUT: api/Traillers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        [Authorize]
-        public async Task<IActionResult> PutTrailler(int id, TraillerDto traillerDto)
-        {
-            try
-            {
-                TraillerDto model = await _traillerServices.UpdateTrailler(traillerDto);
-                _responseDto.Result = model;
-                return Ok(_responseDto);
-            }
-            catch (Exception ex)
-            {
-                _responseDto.Correcto = false;
-                _responseDto.Mensaje = "Error al actualizar el trailler";
-                _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
-                return BadRequest(_responseDto);
-            }  
-        }
-
-        // POST: api/Traillers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Trailler>> PostTrailler(TraillerDto traillerDto)
@@ -105,7 +82,25 @@ namespace API_Trailler.Controllers
             }
         }
 
-        // DELETE: api/Traillers/5
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> PutTrailler(int id, TraillerDto traillerDto)
+        {
+            try
+            {
+                TraillerDto model = await _traillerServices.UpdateTrailler(traillerDto);
+                _responseDto.Result = model;
+                return Ok(_responseDto);
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Correcto = false;
+                _responseDto.Mensaje = "Error al actualizar el trailler";
+                _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+                return BadRequest(_responseDto);
+            }  
+        }
+
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteTrailler(int id)

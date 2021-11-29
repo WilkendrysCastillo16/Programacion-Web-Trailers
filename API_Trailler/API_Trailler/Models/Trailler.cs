@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -20,7 +21,7 @@ namespace API_Trailler.Models
         public string Cover { get; set; }
         public string Link { get; set; }
         public byte? Rating { get; set; }
-
+        
         public virtual ICollection<TraillerActor> TraillerActors { get; set; }
     }
 }

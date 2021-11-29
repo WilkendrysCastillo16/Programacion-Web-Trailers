@@ -19,6 +19,7 @@ using API_Trailler.Services.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
+using System.Text.Json.Serialization;
 
 namespace API_Trailler
 {
@@ -34,6 +35,13 @@ namespace API_Trailler
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddControllers().AddJsonOptions(x =>
+                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+
+            services.AddControllers().AddNewtonsoftJson(x =>
+                    x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddDbContext<dbTraillerContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("Conexion")));
 
@@ -43,6 +51,7 @@ namespace API_Trailler
 
             services.AddScoped<ITraillerServices, TraillerServices>();
             services.AddScoped<ILoginAdminServices, LoginAdminServices>();
+            services.AddScoped<ITraillerActorServices, TraillerActorServices>();
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

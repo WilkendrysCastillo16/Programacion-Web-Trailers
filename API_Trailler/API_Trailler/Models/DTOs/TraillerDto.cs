@@ -15,5 +15,7 @@ namespace API_Trailler.Models.DTOs
         public string Cover { get; set; }
         public string Link { get; set; }
         public byte? Rating { get; set; }
+
+        public virtual List<TraillerActor> TraillerActors { get; set; }
     }
 }
