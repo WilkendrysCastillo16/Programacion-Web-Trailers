@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-crud-trailers',
@@ -9,8 +9,8 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 export class CrudTrailersComponent implements OnInit {
   isOptional = false;
   // SELECCIONADO DE ACTORES LINEA 11-13
-  actores = new FormControl();
-  actoresList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  // actores = new FormControl();
+  // actoresList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 
   // SELECCIONADO DE RATING LINEA 16-34
   autoTicks = false;
@@ -33,31 +33,30 @@ export class CrudTrailersComponent implements OnInit {
     return this.value;
   }
 
-  firstFormGroup = this._formBuilder.group({
-    id: [''],
-    idTrailer: [''],
-    idActor: ['']
+  firstFormGroup:FormGroup = this._formBuilder.group({
+    id: '',
+    nombre: 'default',
+    apellido: 'default'
   });
 
-  secondFormGroup = this._formBuilder.group({
-    idTrailer: ['', Validators.required],
-    title: ['', Validators.required],
-    director: ['', Validators.required],
+  secondFormGroup:FormGroup = this._formBuilder.group({
+    idTrailer: '',
+    title: ['', [Validators.required]],
+    director: ['', [Validators.required]],
     review: ['', [Validators.required]],
     year_trailer: ['', [Validators.required]],
-    cover: ['', [Validators.required, Validators.email]],
-    link: ['', Validators.required],
-    rating: ['', Validators.required]
+    cover: ['', [Validators.required]],
+    link: ['', [Validators.required]],
+    rating: ['', [Validators.required]]
   });
 
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: '',
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
+  }
+
+  evento(){
+    console.log(this.firstFormGroup);
+    console.log(this.secondFormGroup);
   }
 }
