@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {StepperOrientation} from '@angular/material/stepper';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-crud-trailers',
@@ -7,7 +11,7 @@ import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } f
   styleUrls: ['./crud-trailers.component.css']
 })
 export class CrudTrailersComponent implements OnInit {
-  isOptional = false;
+  //isOptional = false;
   // SELECCIONADO DE ACTORES LINEA 11-13
   // actores = new FormControl();
   // actoresList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
@@ -49,8 +53,13 @@ export class CrudTrailersComponent implements OnInit {
     link: ['', [Validators.required]],
     rating: ['', [Validators.required]]
   });
+  stepperOrientation: Observable<StepperOrientation>;
+  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
+    this.stepperOrientation = breakpointObserver
+      .observe('(min-width: 800px)')
+      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
 
-  constructor(private _formBuilder: FormBuilder) { }
+   }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,87 @@
 <div class="container-crud">
-    <mat-stepper linear #stepper>
+
+    <!-- RESPONSIVE -->
+
+    <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" label="A&ntilde;adir Actores" [optional]="false" [editable]="false"
+            class="titulo-actores">
+            <form [formGroup]="firstFormGroup" class="form-actores">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="lbl-nombre">Nombre</mat-label>
+                    <input matInput formControlName="nombre" placeholder="Ex. Elian">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="lbl-apellido">Apellido</mat-label>
+                    <input matInput formControlName="apellido" placeholder="Ex. Germosen">
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext (click)="evento()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="A&ntilde;adir Trailler" [editable]="false">
+            <form [formGroup]="secondFormGroup">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Titulo</mat-label>
+                    <input matInput formControlName="title" placeholder="Ex. La casa de papel" required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Director</mat-label>
+                    <input matInput formControlName="director"
+                        placeholder="Ex. Álex Pina, Sonia Martínez, Jesús Colmenar, Esther Martínez Lobato y Nacho Manubens"
+                        required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Rese&ntilde;a</mat-label>
+                    <textarea matInput formControlName="review"
+                        placeholder="Ex. La estética de la serie fue desarrollada por el creador Álex Pina, el director Jesús Colmenar y el director de fotografía Migue Amoedo, según La Vanguardia ''El trío artístico más prolífico de los últimos años'."
+                        required></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Portada</mat-label>
+                    <input matInput formControlName="cover"
+                        placeholder="Ex. https://pinimg.com/564x/d5/d4/39/d5d439da0a74058366f9e4df25db5fa2.jpg"
+                        required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Trailer</mat-label>
+                    <input matInput formControlName="link" placeholder="Ex. https://www.youtube.com/embed/7dWs0_yqm-0"
+                        required>
+                </mat-form-field>
+                <!-- AQUI IRIA EL DROPDOWNLIST MULTIPLE PARA LOS ACTORES DE LA PELICULA -->
+                <mat-form-field color="accent" appearance="fill">
+                    <mat-label>Inherited calendar color</mat-label>
+                    <input matInput formControlName="year_trailer" [matDatepicker]="picker1">
+                    <mat-datepicker-toggle matSuffix [for]="picker1">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <div class="example-label-container"
+                    [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
+                    <label id="example-name-label" class="example-name-label">Rating </label>
+                    <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
+                    </mat-icon>
+                </div>
+                <mat-slider formControlName="rating" class="example-margin" [disabled]="disabled" [invert]="invert"
+                    [max]="max" [min]="min" [step]="step" [thumbLabel]="thumbLabel"
+                    [tickInterval]="getSliderTickInterval()" [(ngModel)]="value" [vertical]="vertical"
+                    aria-labelledby="example-name-label">
+                </mat-slider>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext (click)="evento()">Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Agregado</ng-template>
+            <p>Tu trailer ha sido agregado con exito a la aplicacion.</p>
+        </mat-step>
+    </mat-stepper>
+
+    <!-- NO RESPONSIVE -->
+
+    <!-- <mat-stepper linear #stepper>
         <mat-step [stepControl]="firstFormGroup" [optional]="isOptional">
             <form [formGroup]="firstFormGroup" class="form-actores">
                 <ng-template matStepLabel class="titulo-actores">A&ntilde;adir Actores</ng-template>
@@ -26,9 +108,9 @@
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>A&ntilde;adir Trailler</ng-template>
-                <!-- <form class="example-form"> BENDITO ERROR -->
-                <table class="example-full-width" cellspacing="0">
+                <ng-template matStepLabel>A&ntilde;adir Trailler</ng-template> -->
+    <!-- <form class="example-form"> BENDITO ERROR -->
+    <!-- <table class="example-full-width" cellspacing="0">
                     <tr>
                         <td>
                             <mat-form-field class="example-full-width" appearance="fill">
@@ -78,8 +160,8 @@
                     </tr>
                 </table>
                 <table class="example-full-width" cellspacing="0">
-                    <tr>
-                        <!-- <td>
+                    <tr> -->
+    <!-- <td>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Actores</mat-label>
                                     <mat-select [formControl]="actores" multiple>
@@ -96,7 +178,7 @@
                                     </mat-select>
                                 </mat-form-field>
                             </td> -->
-                        <td>
+    <!-- <td>
                             <mat-form-field color="accent" appearance="fill">
                                 <mat-label>Inherited calendar color</mat-label>
                                 <input matInput formControlName="year_trailer" [matDatepicker]="picker1">
@@ -108,9 +190,9 @@
                         <td>
                             <div class="example-label-container"
                                 [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-                                <label id="example-name-label" class="example-name-label">Rating </label>
-                                <!-- <label class="example-value-label">{{value}} </label> -->
-                                <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
+                                <label id="example-name-label" class="example-name-label">Rating </label> -->
+    <!-- <label class="example-value-label">{{value}} </label> -->
+    <!-- <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
                                 </mat-icon>
                             </div>
                             <mat-slider formControlName="rating" class="example-margin" [disabled]="disabled"
@@ -120,9 +202,9 @@
                             </mat-slider>
                         </td>
                     </tr>
-                </table>
-                <!-- </form> ERRROORRR-->
-                <div>
+                </table> -->
+    <!-- </form> ERRROORRR-->
+    <!-- <div>
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext (click)="evento()">Next</button>
                 </div>
@@ -130,11 +212,11 @@
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Agregado</ng-template>
-            <p>Tu trailer ha sido agregado con exito a la aplicacion.</p>
-            <!-- <div>
+            <p>Tu trailer ha sido agregado con exito a la aplicacion.</p> -->
+    <!-- <div>
                 <button mat-button matStepperPrevious>Back</button> -->
-            <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-            <!-- </div> -->
-        </mat-step>
-    </mat-stepper>
+    <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+    <!-- </div> -->
+    <!-- </mat-step>
+    </mat-stepper> -->
 </div>

@@ -1,3 +1,7 @@
+/* .container-principal {
+  padding: 30px 0 30px 30px;
+} */
+
 .admin {
   text-align: right;
   position: relative;
@@ -23,7 +27,7 @@
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-.content {
+.content-cards {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -68,4 +72,5 @@
   color: #75dddd;
   text-align: center;
   align-items: center;
+  padding-top: 20px;
 }
