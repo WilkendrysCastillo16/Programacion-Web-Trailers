@@ -42,6 +42,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
     MatSliderModule,
     FormsModule,
     ReactiveFormsModule

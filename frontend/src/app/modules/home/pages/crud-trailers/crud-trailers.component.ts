@@ -12,9 +12,9 @@ import {map} from 'rxjs/operators';
 })
 export class CrudTrailersComponent implements OnInit {
   //isOptional = false;
-  // SELECCIONADO DE ACTORES LINEA 11-13
-  // actores = new FormControl();
-  // actoresList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  // SELECCIONADO DE ACTORES LINEA 16-17
+  actores = new FormControl();
+  actorList: string[] = ['Tokio', 'Profesor', 'Berlin', 'Nairobi', 'Rio', 'Denver'];
 
   // SELECCIONADO DE RATING LINEA 16-34
   autoTicks = false;

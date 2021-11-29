@@ -46,20 +46,30 @@
                     <input matInput formControlName="link" placeholder="Ex. https://www.youtube.com/embed/7dWs0_yqm-0"
                         required>
                 </mat-form-field>
-                <!-- AQUI IRIA EL DROPDOWNLIST MULTIPLE PARA LOS ACTORES DE LA PELICULA -->
-                <mat-form-field color="accent" appearance="fill">
-                    <mat-label>Inherited calendar color</mat-label>
+                <mat-form-field appearance="fill" class="multiple-actores">
+                    <mat-label>Actores</mat-label>
+                    <mat-select [formControl]="actores" multiple>
+                        <mat-select-trigger>
+                            {{actores.value ? actores.value[0] : ''}}
+                            <span *ngIf="actores.value?.length > 1" class="example-additional-selection">
+                                (+{{actores.value.length - 1}} {{actores.value?.length === 2 ? 'other' : 'others'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let actor of actorList" [value]="actor">{{actor}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field color="accent" appearance="fill" class="fecha-rating">
+                    <mat-label>Fecha de Lanzamiento</mat-label>
                     <input matInput formControlName="year_trailer" [matDatepicker]="picker1">
                     <mat-datepicker-toggle matSuffix [for]="picker1">
                     </mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
                 </mat-form-field>
-                <div class="example-label-container"
-                    [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-                    <label id="example-name-label" class="example-name-label">Rating </label>
-                    <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
-                    </mat-icon>
-                </div>
+                <!-- <div class="" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'"> -->
+                <label id="example-name-label" class="fecha-rating">Rating </label>
+                <mat-icon aria-hidden="false" aria-label="icon star" class="star-value">star
+                </mat-icon>
+                <!-- </div> -->
                 <mat-slider formControlName="rating" class="example-margin" [disabled]="disabled" [invert]="invert"
                     [max]="max" [min]="min" [step]="step" [thumbLabel]="thumbLabel"
                     [tickInterval]="getSliderTickInterval()" [(ngModel)]="value" [vertical]="vertical"
