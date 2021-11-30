@@ -48,3 +48,13 @@
   max-width: 68px;
   height: 48px;
 }
+
+.btn-cancel {
+  margin-right: 10px;
+}
+.btn-save {
+  margin: 0 10px 0 0;
+}
+/* .btn-next{
+  margin: 0 10px;
+} */

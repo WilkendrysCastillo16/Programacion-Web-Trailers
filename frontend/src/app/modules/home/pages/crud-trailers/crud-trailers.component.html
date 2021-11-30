@@ -13,7 +13,10 @@
                     <input matInput formControlName="apellido" placeholder="Ex. Germosen">
                 </mat-form-field>
                 <div>
-                    <button mat-button matStepperNext (click)="evento()">Next</button>
+                    <!-- <button mat-button matStepperNext (click)="evento()">Next</button> -->
+                    <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
+                    <button mat-stroked-button color="accent" class="btn-save">Save</button>
+                    <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next">Next</button>
                 </div>
             </form>
         </mat-step>
@@ -76,13 +79,15 @@
                     aria-labelledby="example-name-label">
                 </mat-slider>
                 <div>
-                    <button mat-button matStepperNext (click)="evento()">Next</button>
+                    <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
+                    <button mat-stroked-button color="accent" (click)="evento()" class="btn-save">Save</button>
+                    <!-- <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next">Next</button> -->
                 </div>
             </form>
         </mat-step>
-        <mat-step>
+        <!-- <mat-step>
             <ng-template matStepLabel>Agregado</ng-template>
             <p>Tu trailer ha sido agregado con exito a la aplicacion.</p>
-        </mat-step>
+        </mat-step> -->
     </mat-stepper>
 </div>
