@@ -23,26 +23,46 @@ namespace API_Trailler.Services
 
         public async Task<List<TraillerDto>> GetTraillers()
         {
-            List<Trailler> listaTrailler = await _dbTraillerContext.Traillers.Include(x => x.TraillerActors).ThenInclude(y => y.IdActorNavigation).ToListAsync();
+            //List<Trailler> listaTrailler = await _dbTraillerContext.Traillers.Include(x => x.TraillerActors).ThenInclude(y => y.IdActorNavigation).ToListAsync();
 
-            return _mapper.Map<List<TraillerDto>>(listaTrailler);
+            try
+            {
+                List<Trailler> listaTrailler = await _dbTraillerContext.Traillers.ToListAsync();
+
+                return _mapper.Map<List<TraillerDto>>(listaTrailler);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+                
         }
 
         public async Task<TraillerDto> GetTraillerById(int id)
         {
-            Trailler trailler = await _dbTraillerContext.Traillers.FindAsync(id);
+            try
+            {
+                Trailler trailler = await _dbTraillerContext.Traillers.FindAsync(id);
 
-            return _mapper.Map<TraillerDto>(trailler);
+                return _mapper.Map<TraillerDto>(trailler);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<TraillerDto> AddTrailler(TraillerDto traillerDto)
         {
-            Trailler trailler = _mapper.Map<TraillerDto, Trailler>(traillerDto);
-
             try
             {
+                Trailler trailler = _mapper.Map<TraillerDto, Trailler>(traillerDto);
+
                 await _dbTraillerContext.Traillers.AddAsync(trailler);
                 await _dbTraillerContext.SaveChangesAsync();
+
                 return _mapper.Map<Trailler, TraillerDto>(trailler);
             }
             catch
@@ -53,12 +73,13 @@ namespace API_Trailler.Services
 
         public async Task<TraillerDto> UpdateTrailler(TraillerDto traillerDto)
         {
-            Trailler trailler = _mapper.Map<TraillerDto, Trailler>(traillerDto);
-
             try
             {
+                Trailler trailler = _mapper.Map<TraillerDto, Trailler>(traillerDto);
+
                 _dbTraillerContext.Traillers.Update(trailler);
                 await _dbTraillerContext.SaveChangesAsync();
+
                 return _mapper.Map<Trailler, TraillerDto>(trailler);
             }
             catch

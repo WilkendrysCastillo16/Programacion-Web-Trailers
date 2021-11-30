@@ -20,6 +20,8 @@ namespace API_Trailler
                 config.CreateMap<TraillerActorDto, TraillerActor>();
                 config.CreateMap<TraillerActor, TraillerActorDto>();
 
+                config.CreateMap<ActorDto, Actor>();
+                config.CreateMap<Actor, ActorDto>();
 
             });
             return mappingConfig;

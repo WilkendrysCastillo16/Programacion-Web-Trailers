@@ -24,16 +24,6 @@ namespace API_Trailler.Services
             _configuration = configuration;
         }
 
-        public async Task<bool> Existe(string email)
-        {
-            if (await _dbTraillerContext.LoginAdmins.AnyAsync(x =>
-                                        x.Email.ToLower().Equals(email.ToLower())))
-            {
-                return true;
-            }
-            return false;
-        }
-
         public async Task<string> Login(string email, string pass)
         {
             var user = await _dbTraillerContext.LoginAdmins.FirstOrDefaultAsync(
@@ -51,15 +41,6 @@ namespace API_Trailler.Services
             {
                 return GetToken(user);
             }
-        }
-        public bool VerificarPassword(string email, string pass)
-        {
-            var passEncrypt = Encrypt.GetSHA256(pass);
-            var Coincide = _dbTraillerContext.LoginAdmins.Where(LA => LA.Email == email && 
-                                                                      LA.Pass == passEncrypt).SingleOrDefault();
-
-            if(Coincide == null) { return false; }
-            else { return true; }
         }
 
         public async Task<string> Registrar(LoginAdmin loginAdmin, string pass)
@@ -109,6 +90,26 @@ namespace API_Trailler.Services
 
             return tokenHandler.WriteToken(token);
 
+        }
+
+        public bool VerificarPassword(string email, string pass)
+        {
+            var passEncrypt = Encrypt.GetSHA256(pass);
+            var Coincide = _dbTraillerContext.LoginAdmins.Where(LA => LA.Email == email &&
+                                                                      LA.Pass == passEncrypt).SingleOrDefault();
+
+            if (Coincide == null) { return false; }
+            else { return true; }
+        }
+
+        public async Task<bool> Existe(string email)
+        {
+            if (await _dbTraillerContext.LoginAdmins.AnyAsync(x =>
+                                        x.Email.ToLower().Equals(email.ToLower())))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

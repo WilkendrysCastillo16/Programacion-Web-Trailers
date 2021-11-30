@@ -23,9 +23,17 @@ namespace API_Trailler.Services
 
         public async Task<List<TraillerActorDto>> GetTraillerActor()
         {
-            List<TraillerActor> listaTraillerActor = await _dbTraillerContext.TraillerActors.ToListAsync();
+            try
+            {
+                List<TraillerActor> listaTraillerActor = await _dbTraillerContext.TraillerActors.ToListAsync();
 
-            return _mapper.Map<List<TraillerActorDto>>(listaTraillerActor);
+                return _mapper.Map<List<TraillerActorDto>>(listaTraillerActor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<List<TraillerActorJoinDto>> GetTraillerActorJoin()
@@ -49,26 +57,36 @@ namespace API_Trailler.Services
 
         public async Task<TraillerActorDto> GetTraillerActorById(int id)
         {
-            TraillerActor traillerActor = await _dbTraillerContext.TraillerActors.FindAsync(id);
+            try
+            {
+                TraillerActor traillerActor = await _dbTraillerContext.TraillerActors.FindAsync(id);
 
-            return _mapper.Map<TraillerActorDto>(traillerActor);
+                return _mapper.Map<TraillerActorDto>(traillerActor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<TraillerActorJoinDto> GetTraillerActorJoinById(int id)
         {
             List<TraillerActor> traillerActor = await _dbTraillerContext.TraillerActors.ToListAsync();
             List<Trailler> trailler = new List<Trailler>();
+            List<Actor> listaActorFiltrado = new List<Actor>();
+            Trailler traillerFiltrado;
 
-            for(int i = 0; i < traillerActor.Count; i++)
+            for (int i = 0; i < traillerActor.Count; i++)
             {
-                if(traillerActor[i].Id == id)
+                if (traillerActor[i].Id == id)
                 {
                     trailler.Add(_dbTraillerContext.Traillers.Where(t => t.Id == traillerActor[i].IdTrailler).FirstOrDefault());
                     break;
                 }
             }
 
-            var traillerFiltrado = new Trailler
+            traillerFiltrado = new Trailler
             {
                 Id = trailler[0].Id,
                 Title = trailler[0].Title,
@@ -80,9 +98,7 @@ namespace API_Trailler.Services
                 Rating = trailler[0].Rating
             };
 
-            List<Actor> listaActorFiltrado = new List<Actor>();
-
-            BuscarActores(trailler,traillerActor,listaActorFiltrado, 0);
+            BuscarActores(trailler, traillerActor, listaActorFiltrado, 0);
 
             var traillerActorJoinDto = new TraillerActorJoinDto { 
                     trailler = traillerFiltrado,
@@ -112,10 +128,10 @@ namespace API_Trailler.Services
 
         public async Task<TraillerActorDto> UpdateTraillerActor(TraillerActorDto traillerActorDto)
         {
-            TraillerActor traillerActor = _mapper.Map<TraillerActorDto, TraillerActor>(traillerActorDto);
-
             try
             {
+                TraillerActor traillerActor = _mapper.Map<TraillerActorDto, TraillerActor>(traillerActorDto);
+
                 if (traillerActor.Id > 0)
                 {
                     _dbTraillerContext.TraillerActors.Update(traillerActor);

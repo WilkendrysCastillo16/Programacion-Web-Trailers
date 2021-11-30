@@ -21,14 +21,62 @@ namespace API_Trailler.Services
             _mapper = mapper;
         }
 
-        public async Task<ActorDto> AddActor(ActorDto actorDto)
+        public async Task<List<ActorDto>> GetActors()
         {
-            Actor actor = _mapper.Map<ActorDto, Actor>(actorDto);
-
             try
             {
+                List<Actor> listaActor = await _dbTraillerContext.Actors.ToListAsync();
+
+                return _mapper.Map<List<ActorDto>>(listaActor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<ActorDto> GetActorById(int id)
+        {
+            try
+            {
+                Actor actor = await _dbTraillerContext.Actors.FindAsync(id);
+
+                return _mapper.Map<ActorDto>(actor);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<ActorDto> AddActor(ActorDto actorDto)
+        {
+            try
+            {
+                Actor actor = _mapper.Map<ActorDto, Actor>(actorDto);
+
                 await _dbTraillerContext.Actors.AddAsync(actor);
                 await _dbTraillerContext.SaveChangesAsync();
+
+                return _mapper.Map<Actor, ActorDto>(actor);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<ActorDto> UpdateActor(ActorDto actorDto)
+        {
+            try
+            {
+                Actor actor = _mapper.Map<ActorDto, Actor>(actorDto);
+
+                _dbTraillerContext.Actors.Update(actor);
+                await _dbTraillerContext.SaveChangesAsync();
+
                 return _mapper.Map<Actor, ActorDto>(actor);
             }
             catch
@@ -53,36 +101,6 @@ namespace API_Trailler.Services
             catch (Exception)
             {
                 return false;
-            }
-        }
-
-        public async Task<ActorDto> GetActorById(int id)
-        {
-            Actor actor = await _dbTraillerContext.Actors.FindAsync(id);
-
-            return _mapper.Map<ActorDto>(actor);
-        }
-
-        public async Task<List<ActorDto>> GetActors()
-        {
-            List<Actor> listaActor = await _dbTraillerContext.Actors.ToListAsync();
-
-            return _mapper.Map<List<ActorDto>>(listaActor);
-        }
-
-        public async Task<ActorDto> UpdateActor(ActorDto actorDto)
-        {
-            Actor actor = _mapper.Map<ActorDto, Actor>(actorDto);
-
-            try
-            {
-                _dbTraillerContext.Actors.Update(actor);
-                await _dbTraillerContext.SaveChangesAsync();
-                return _mapper.Map<Actor, ActorDto>(actor);
-            }
-            catch
-            {
-                throw;
             }
         }
     }

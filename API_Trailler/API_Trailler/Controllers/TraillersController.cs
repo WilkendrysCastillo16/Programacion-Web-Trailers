@@ -27,7 +27,7 @@ namespace API_Trailler.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetTraillers()
+        public async Task<ActionResult<IEnumerable<Trailler>>> GetTraillers()
         {
             try
             {
@@ -36,12 +36,13 @@ namespace API_Trailler.Controllers
                 _responseDto.Result = listaTrailler;
                 _responseDto.Mensaje = "Lista de Trailler";
 
-                return Ok(listaTrailler);
+                return Ok(_responseDto);
             }
             catch (Exception ex)
             {
                 _responseDto.Correcto = false;
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
@@ -49,22 +50,31 @@ namespace API_Trailler.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Trailler>> GetTrailler(int id)
         {
-            var trailler = await _traillerServices.GetTraillerById(id);
-            if(trailler == null)
+            try
             {
-                _responseDto.Correcto = false;
-                _responseDto.Mensaje = "El trailler no existe";
-                return NotFound(_responseDto);
-            }
-            _responseDto.Result = trailler;
-            _responseDto.Mensaje = "Informacion del trailler";
+                var trailler = await _traillerServices.GetTraillerById(id);
+                if (trailler == null)
+                {
+                    _responseDto.Correcto = false;
+                    _responseDto.Mensaje = "El trailler no existe";
 
-            return Ok(_responseDto);
+                    return NotFound(_responseDto);
+                }
+                _responseDto.Result = trailler;
+                _responseDto.Mensaje = "Informacion del trailler";
+
+                return Ok(_responseDto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Trailler>> PostTrailler(TraillerDto traillerDto)
+        public async Task<ActionResult<Trailler>> AddTrailler(TraillerDto traillerDto)
         {
             try
             {
@@ -78,18 +88,20 @@ namespace API_Trailler.Controllers
                 _responseDto.Correcto = false;
                 _responseDto.Mensaje = "Error al insertar el trailler";
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> PutTrailler(int id, TraillerDto traillerDto)
+        public async Task<IActionResult> UpdateTrailler(int id, TraillerDto traillerDto)
         {
             try
             {
                 TraillerDto model = await _traillerServices.UpdateTrailler(traillerDto);
                 _responseDto.Result = model;
+
                 return Ok(_responseDto);
             }
             catch (Exception ex)
@@ -97,6 +109,7 @@ namespace API_Trailler.Controllers
                 _responseDto.Correcto = false;
                 _responseDto.Mensaje = "Error al actualizar el trailler";
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }  
         }
@@ -112,12 +125,14 @@ namespace API_Trailler.Controllers
                 {
                     _responseDto.Result = eliminado;
                     _responseDto.Mensaje = "Trailler eliminado correctamente";
+
                     return Ok(_responseDto);
                 }
                 else
                 {
                     _responseDto.Correcto = false;
                     _responseDto.Mensaje = "Error al eliminar un cliente";
+
                     return BadRequest(_responseDto);
                 }
             }
@@ -125,9 +140,9 @@ namespace API_Trailler.Controllers
             {
                 _responseDto.Correcto = false;
                 _responseDto.Result = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
-
     }
 }

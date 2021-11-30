@@ -25,68 +25,55 @@ namespace API_Trailler.Controllers
             _responseDto = new ResponseDto();
         }
 
-        // GET: api/Actor
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
         {
             try
             {
                 var listaActor = await _actorServices.GetActors();
+
                 _responseDto.Result = listaActor;
                 _responseDto.Mensaje = "Lista de Actor";
-            }
-            catch (Exception ex)
-            {
-                _responseDto.Correcto = false;
-                _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
-            }
 
-            return Ok(_responseDto);
-        }
-
-        // GET: api/Actor/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
-        {
-            var actor = await _actorServices.GetActorById(id);
-            if (actor == null)
-            {
-                _responseDto.Correcto = false;
-                _responseDto.Mensaje = "El Actor no existe";
-                return NotFound(_responseDto);
-            }
-           _responseDto.Result = actor;
-            _responseDto.Mensaje = "Informacion del Actor";
-
-            return Ok(_responseDto);
-        }
-
-        // PUT: api/Actors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        [Authorize]
-        public async Task<IActionResult> PutActor(int id, ActorDto actorDto)
-        {
-            try
-            {
-                ActorDto model = await _actorServices.UpdateActor(actorDto);
-                _responseDto.Result = model;
                 return Ok(_responseDto);
             }
             catch (Exception ex)
             {
                 _responseDto.Correcto = false;
-                _responseDto.Mensaje = "Error al actualizar el Actor";
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
 
-        // POST: api/Actors
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Actor>> GetActor(int id)
+        {
+            try
+            {
+                var actor = await _actorServices.GetActorById(id);
+                if (actor == null)
+                {
+                    _responseDto.Correcto = false;
+                    _responseDto.Mensaje = "El Actor no existe";
+
+                    return NotFound(_responseDto);
+                }
+                _responseDto.Result = actor;
+                _responseDto.Mensaje = "Informacion del Actor";
+
+                return Ok(_responseDto);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult<Actor>> PostActor(ActorDto actorDto)
+        public async Task<ActionResult<Actor>> AddActor(ActorDto actorDto)
         {
             try
             {
@@ -100,11 +87,32 @@ namespace API_Trailler.Controllers
                 _responseDto.Correcto = false;
                 _responseDto.Mensaje = "Error al insertar el Actor";
                 _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
 
-        // DELETE: api/Actors/5
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<IActionResult> UpdateActor(int id, ActorDto actorDto)
+        {
+            try
+            {
+                ActorDto model = await _actorServices.UpdateActor(actorDto);
+                _responseDto.Result = model;
+
+                return Ok(_responseDto);
+            }
+            catch (Exception ex)
+            {
+                _responseDto.Correcto = false;
+                _responseDto.Mensaje = "Error al actualizar el Actor";
+                _responseDto.ErrorMensaje = new List<string> { ex.ToString() };
+
+                return BadRequest(_responseDto);
+            }
+        }
+
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<IActionResult> DeleteActor(int id)
@@ -116,12 +124,14 @@ namespace API_Trailler.Controllers
                 {
                     _responseDto.Result = eliminado;
                     _responseDto.Mensaje = "Actor eliminado correctamente";
+
                     return Ok(_responseDto);
                 }
                 else
                 {
                     _responseDto.Correcto = false;
                     _responseDto.Mensaje = "Error al eliminar un cliente";
+
                     return BadRequest(_responseDto);
                 }
             }
@@ -129,11 +139,9 @@ namespace API_Trailler.Controllers
             {
                 _responseDto.Correcto = false;
                 _responseDto.Result = new List<string> { ex.ToString() };
+
                 return BadRequest(_responseDto);
             }
         }
-
-
-
     }
 }

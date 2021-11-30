@@ -52,6 +52,7 @@ namespace API_Trailler
             services.AddScoped<ITraillerServices, TraillerServices>();
             services.AddScoped<ILoginAdminServices, LoginAdminServices>();
             services.AddScoped<ITraillerActorServices, TraillerActorServices>();
+            services.AddScoped<IActorServices, ActorServices>();
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -68,8 +69,19 @@ namespace API_Trailler
                     };
                 });
 
+            //services.AddSwaggerGen(c =>
+            //{
+
+
+            //});
+
+            services.AddCors();
+
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_Trailler", Version = "v1" });
+
                 c.OperationFilter<SecurityRequirementsOperationFilter>();
 
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
@@ -80,15 +92,6 @@ namespace API_Trailler
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-
-            });
-
-            services.AddCors();
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_Trailler", Version = "v1" });
             });
         }
 
