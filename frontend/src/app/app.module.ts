@@ -11,6 +11,8 @@ import { HomeModule } from './modules/home/home.module';
 // import { HeaderComponent } from './core/header/header.component';//importamos el header para su acceso
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//de angular material
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';/
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule
     // FooterComponent,
     // HeaderComponent
   ],
