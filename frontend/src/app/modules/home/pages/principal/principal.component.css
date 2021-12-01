@@ -1,6 +1,6 @@
-/* .container-principal {
+.container-principal {
   padding: 30px 0 30px 30px;
-} */
+}
 
 .admin {
   text-align: right;
@@ -48,6 +48,8 @@
 
 .header-card {
   text-align: center;
+  align-items: center;
+  justify-content: center;
   color: #75dddd;
 }
 

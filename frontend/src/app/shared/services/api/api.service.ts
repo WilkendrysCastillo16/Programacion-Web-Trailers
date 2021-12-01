@@ -18,16 +18,16 @@ export class ApiService {
 
   //GET ALL
 
-  getActores(): Observable<IActor[]>{
-    return this._http.get<IActor[]>(this.hostApi +'api/actors');
+  getActores(): Observable<any>{
+    return this._http.get(this.hostApi +'api/actors');
   }
 
   getTraillers(): Observable<ITrailer[]>{
     return this._http.get<ITrailer[]>(this.hostApi +'api/traillers');
   } // https://api-trailler.azurewebsites.net/api/traillers
 
-  getTraillerActor(): Observable<ITraillerActor[]>{
-    return this._http.get<ITraillerActor[]>(this.hostApi +'api/trailleractor/completo');
+  getTraillerActor(): Observable<any>{
+    return this._http.get(this.hostApi +'api/trailleractor/completo');
   }
 
 }

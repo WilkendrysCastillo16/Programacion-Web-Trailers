@@ -1,3 +1,6 @@
+import { ITraillerActor } from './../../interfaces/trailler-actor';
+import { IActor } from './../../interfaces/actor';
+import { ApiService } from './../../../../shared/services/api/api.service';
 import { HeaderComponent } from './../../../../core/header/header.component';
 import { DialogComponent } from './../../components/dialog/dialog.component';
 import { CrudTrailersComponent } from './../crud-trailers/crud-trailers.component';
@@ -14,7 +17,9 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  trailerActor:ITraillerActor[]|undefined;
+
+  constructor(public dialog: MatDialog, private api:ApiService) { }
 
   openDialog() {
     const dialogRef = this.dialog.open(DetallesComponent);
@@ -34,6 +39,11 @@ export class PrincipalComponent implements OnInit {
     // const dialogAdmin = this.dialog.open(DialogComponent);
   }
   ngOnInit(): void {
+    this.api.getTraillerActor().subscribe(x=>{
+      // console.log(x)
+      this.trailerActor = x.result;
+      console.log(this.trailerActor);
+    })
   }
   
 }
