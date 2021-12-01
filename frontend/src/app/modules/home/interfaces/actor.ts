@@ -1,5 +1,5 @@
 export interface IActor {
-    id: number;
+    id: number,
     nameActor: string,
     lastName: string
 }
