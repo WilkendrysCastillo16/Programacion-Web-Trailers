@@ -5,6 +5,8 @@ import { IActor } from './../../interfaces/actor';
 import { PrincipalComponent } from '../../pages/principal/principal.component';
 import { DomSanitizer } from '@angular/platform-browser';
 
+
+
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -19,6 +21,7 @@ export class DetallesComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public detalle: {trailer: ITraillerActor}) { }
 
   ngOnInit(): void {
+    
     console.log(this.detalle);
   }
 
@@ -26,4 +29,6 @@ export class DetallesComponent implements OnInit {
     this.dialogRef.close();
   }
 
+
 }
+

@@ -45,8 +45,13 @@ export class PrincipalComponent implements OnInit {
     this.api.getTraillerActor().subscribe(x=>{
       // console.log(x)
       this.trailerActor = x.result;
-      console.log(this.trailerActor);
+      //console.log(this.trailerActor);
     })
   }
+
+
+  // editar(){
+  //   const dialogAdmin = this.dialog.open(CrudTrailersComponent);
+  // }
   
 }
