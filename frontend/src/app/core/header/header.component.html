@@ -9,9 +9,10 @@
     <ul>
       <li><input type="search" placeholder="Filtrar"></li>
       <li>
-        <p>lendofkeury@gmail.com</p>
+        <p>{{emailAdmin}}</p>
       </li>
-      <li><a class="active" href="/login">Login</a></li>
+      <li *ngIf="exists()"><a class="active" href="/login">Login</a></li>
+      <li *ngIf="!exists()" onclick="localStorage.clear();"><a href="/principal">logout</a></li>
     </ul>
   </div>
 </nav>
