@@ -67,25 +67,18 @@ export class CrudTrailersComponent implements OnInit {
    }
 
     ngOnInit(): void {
-      let token = localStorage.getItem("token");
+      let Token = localStorage.getItem("Token");
       this.firstFormGroup.patchValue({
-        'token':token
+        'Token': Token
       });
     }
 
     onSubmit() {
-      this.api.postActor({
-        id: 0,
-        nameActor: this.firstFormGroup.value.nombre,
-        lastName: this.firstFormGroup.value.apellido,
-      })
-      .subscribe(respuesta =>{
-        console.log("Todo Bien")
-      })
     }
 
     evento(){
-      // console.log(this.firstFormGroup);
-      // console.log(this.secondFormGroup);
+      console.log(this.firstFormGroup);
+      console.log(this.secondFormGroup);
     }
 }
+
