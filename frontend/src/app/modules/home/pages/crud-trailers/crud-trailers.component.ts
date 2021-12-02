@@ -79,14 +79,15 @@ export class CrudTrailersComponent implements OnInit {
    }
 
     ngOnInit(): void {
-      let token = localStorage.getItem("token");
+      let Token = localStorage.getItem("Token");
       this.firstFormGroup.patchValue({
-        'token':token
+        'Token': Token
       });
     }
 
     evento(){
-      // console.log(this.firstFormGroup);
-      // console.log(this.secondFormGroup);
+      console.log(this.firstFormGroup);
+      console.log(this.secondFormGroup);
     }
 }
+
