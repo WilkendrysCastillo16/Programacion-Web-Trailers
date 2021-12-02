@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITraillerActor } from '../../interfaces/trailler-actor';
 import { IActor } from './../../interfaces/actor';
 
+
+
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -16,6 +18,9 @@ export class DetallesComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public detalle: {trailer: ITraillerActor}) { }
 
   ngOnInit(): void {
+    
   }
 
+
 }
+
