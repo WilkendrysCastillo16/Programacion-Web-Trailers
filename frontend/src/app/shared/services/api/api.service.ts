@@ -12,7 +12,11 @@ import { ILoginResponse } from 'src/app/modules/home/interfaces/login-response';
 })
 export class ApiService {
 
-  constructor(private _http: HttpClient) { }
+
+  constructor(private _http: HttpClient) { 
+    // this.header.append("Content-Type", "application/json");
+    // this.header.append("Authorization", "bearer " + localStorage.getItem("Token"));
+  }
 
   private hostApi: string = 'https://api-trailler.azurewebsites.net/';
 
@@ -33,7 +37,12 @@ export class ApiService {
   //POST
 
   postActor(actor: IActor): Observable<IActor>{
-    return this._http.post<IActor>(this.hostApi+'api/actors', actor)
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.post<IActor>(this.hostApi+'api/actors', actor, { headers: headers })
   }
   
   postLogin(form: ILogin): Observable<ILoginResponse>{

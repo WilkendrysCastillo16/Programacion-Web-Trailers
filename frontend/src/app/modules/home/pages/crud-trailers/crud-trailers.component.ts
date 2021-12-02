@@ -44,24 +44,20 @@ export class CrudTrailersComponent implements OnInit {
   firstFormGroup:FormGroup = this._formBuilder.group({
     id: '',
     nombre: '',
-    apellido: '',
-    token: ''
+    apellido: ''
   });
 
-  nuevoActor:FormGroup = new FormGroup({
-      nombre : new FormControl(''),
-      apellido : new FormControl(''),
-  });
+  nuevoActor = new FormGroup({
+    nameActor: new FormControl(''),
+    lastName: new FormControl('')
+  })
 
   postActor(form: IActor){
-    // this.api.(form).subscribe(data => {
-    //   let dataResponse : ILoginResponse = data;
-    //   if(dataResponse.correcto){
-    //     localStorage.setItem("Token", dataResponse.result)
-    //     this.router.navigate(['principal']);
-    //   }
-    // })
+    this.api.postActor(form).subscribe(data => {
+      console.log(data);
+    })
   }
+
 
   secondFormGroup:FormGroup = this._formBuilder.group({
     idTrailer: '',
@@ -73,6 +69,7 @@ export class CrudTrailersComponent implements OnInit {
     link: ['', [Validators.required]],
     rating: ['', [Validators.required]],
   });
+
   stepperOrientation: Observable<StepperOrientation>;
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
     
@@ -86,17 +83,6 @@ export class CrudTrailersComponent implements OnInit {
       this.firstFormGroup.patchValue({
         'token':token
       });
-    }
-
-    onSubmit() {
-      this.api.postActor({
-        id: 0,
-        nameActor: this.firstFormGroup.value.nombre,
-        lastName: this.firstFormGroup.value.apellido,
-      })
-      .subscribe(respuesta =>{
-        console.log("Todo Bien")
-      })
     }
 
     evento(){

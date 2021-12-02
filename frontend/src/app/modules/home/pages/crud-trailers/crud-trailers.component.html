@@ -3,14 +3,14 @@
     <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" linear #stepper>
         <mat-step [stepControl]="firstFormGroup" label="A&ntilde;adir Actores" [optional]="false" [editable]="false"
             class="titulo-actores">
-            <form [formGroup]="firstFormGroup" [formGroup]="nuevoActor" class="form-actores" (ngSubmit)="postActor(nuevoActor.value)">
+            <form [formGroup]="nuevoActor" (ngSubmit)="postActor(nuevoActor.value)" class="form-actores" >
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label class="lbl-nombre">Nombre</mat-label>
-                    <input matInput formControlName="nombre" placeholder="Ex. Elian">
+                    <input matInput formControlName="nameActor" placeholder="Ex. Elian">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label class="lbl-apellido">Apellido</mat-label>
-                    <input matInput formControlName="apellido" placeholder="Ex. Germosen">
+                    <input matInput formControlName="lastName" placeholder="Ex. Germosen">
                 </mat-form-field>
                 <div>
                     <!-- <button mat-button matStepperNext (click)="evento()">Next</button> -->
