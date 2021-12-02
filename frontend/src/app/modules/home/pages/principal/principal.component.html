@@ -6,7 +6,8 @@
         </button>
     </div>
     <div class="content-cards">
-        <mat-card class="example-card" (click)="openDialog()" *ngFor="let trailer of trailerActor">
+        
+        <mat-card class="example-card" (click)="openDialog()" *ngFor="let trailer of trailerActor?.reverse()">
             <mat-card-header class="header-card">
                 <mat-card-title>{{trailer.trailler.title}}</mat-card-title>
             </mat-card-header>
