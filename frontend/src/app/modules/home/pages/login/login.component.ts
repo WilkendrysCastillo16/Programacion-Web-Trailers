@@ -29,10 +29,8 @@ export class LoginComponent implements OnInit {
       let dataResponse : ILoginResponse = data;
       if(dataResponse.correcto){
         localStorage.setItem("Token", dataResponse.result)
-        
+        this.router.navigate(['principal']);
       }
     })
-
-
   }
 }
