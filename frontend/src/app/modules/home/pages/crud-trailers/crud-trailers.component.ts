@@ -39,8 +39,8 @@ export class CrudTrailersComponent implements OnInit {
 
   firstFormGroup:FormGroup = this._formBuilder.group({
     id: '',
-    nombre: 'default',
-    apellido: 'default'
+    nombre: '',
+    apellido: ''
   });
 
   secondFormGroup:FormGroup = this._formBuilder.group({
