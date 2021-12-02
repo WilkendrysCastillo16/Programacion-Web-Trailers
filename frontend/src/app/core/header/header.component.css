@@ -55,6 +55,15 @@
   margin-right: 10px;
 }
 
+.navbar-links li p{
+  width: 95px;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 7px 7px;
+  margin-top: 8px;
+}
+
 a.active,
 a:hover {
   background: #508991;
@@ -80,7 +89,7 @@ a:hover {
   border-radius: 10px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
