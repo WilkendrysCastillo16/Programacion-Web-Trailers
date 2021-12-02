@@ -44,9 +44,20 @@ export class CrudTrailersComponent implements OnInit {
   firstFormGroup:FormGroup = this._formBuilder.group({
     id: '',
     nombre: '',
-    apellido: '',
-    token: ''
+    apellido: ''
   });
+
+  nuevoActor = new FormGroup({
+    nameActor: new FormControl(''),
+    lastName: new FormControl('')
+  })
+
+  postActor(form: IActor){
+    this.api.postActor(form).subscribe(data => {
+      console.log(data);
+    })
+  }
+
 
   secondFormGroup:FormGroup = this._formBuilder.group({
     idTrailer: '',
@@ -58,6 +69,7 @@ export class CrudTrailersComponent implements OnInit {
     link: ['', [Validators.required]],
     rating: ['', [Validators.required]],
   });
+
   stepperOrientation: Observable<StepperOrientation>;
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
     
@@ -71,9 +83,6 @@ export class CrudTrailersComponent implements OnInit {
       this.firstFormGroup.patchValue({
         'Token': Token
       });
-    }
-
-    onSubmit() {
     }
 
     evento(){

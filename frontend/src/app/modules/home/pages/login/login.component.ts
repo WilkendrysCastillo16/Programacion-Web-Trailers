@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     pass: new FormControl('', Validators.required)
   })
 
+  
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
@@ -29,10 +30,8 @@ export class LoginComponent implements OnInit {
       let dataResponse : ILoginResponse = data;
       if(dataResponse.correcto){
         localStorage.setItem("Token", dataResponse.result)
-        
+        this.router.navigate(['principal']);
       }
     })
-
-
   }
 }

@@ -3,19 +3,19 @@
     <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" linear #stepper>
         <mat-step [stepControl]="firstFormGroup" label="A&ntilde;adir Actores" [optional]="false" [editable]="false"
             class="titulo-actores">
-            <form [formGroup]="firstFormGroup" class="form-actores" (ngSubmit)='onSubmit()'>
+            <form [formGroup]="nuevoActor" (ngSubmit)="postActor(nuevoActor.value)" class="form-actores" >
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label class="lbl-nombre">Nombre</mat-label>
-                    <input matInput formControlName="nombre" placeholder="Ex. Elian">
+                    <input matInput formControlName="nameActor" placeholder="Ex. Elian">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label class="lbl-apellido">Apellido</mat-label>
-                    <input matInput formControlName="apellido" placeholder="Ex. Germosen">
+                    <input matInput formControlName="lastName" placeholder="Ex. Germosen">
                 </mat-form-field>
                 <div>
                     <!-- <button mat-button matStepperNext (click)="evento()">Next</button> -->
                     <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
-                    <button mat-stroked-button color="accent" (click)="onSubmit()" class="btn-save">Save</button>
+                    <button mat-stroked-button color="accent" class="btn-save" type="submit" >Save</button>
                     <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next">Next</button>
                 </div>
             </form>
