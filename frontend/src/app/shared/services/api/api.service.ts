@@ -30,8 +30,28 @@ export class ApiService {
     return this._http.get(this.hostApi +'api/trailleractor/completo');
   }
 
+  //POST
+
+  postActor(actor: IActor): Observable<IActor>{
+    return this._http.post<IActor>(this.hostApi+'api/actors', actor)
+  }
+  
   postLogin(form: ILogin): Observable<ILoginResponse>{
     return this._http.post<ILoginResponse>(this.hostApi + 'api/LoginAdmin/Login', form);
+  }
+
+
+  //PUT
+
+  putTraillers(trailer: ITrailer){
+    return this._http.put(this.hostApi+ 'api/traillers', trailer);
+  }
+
+
+
+  //DELETE
+  deleteTraillers(id: number): Observable<any>{
+    return this._http.delete(this.hostApi+ 'api/traillers?id='+ id,{responseType: 'text' })
   }
 
 }

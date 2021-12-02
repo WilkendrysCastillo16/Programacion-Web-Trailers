@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from 'src/app/shared/services/api/api.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {StepperOrientation} from '@angular/material/stepper';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { IActor } from '../../interfaces/actor';
-import { ApiService } from 'src/app/shared/services/api/api.service';
 
 @Component({
   selector: 'app-crud-trailers',
@@ -17,6 +17,8 @@ export class CrudTrailersComponent implements OnInit {
   // SELECCIONADO DE ACTORES LINEA 16-17
   actores = new FormControl();
   actorList: string[] = ['Tokio', 'Profesor', 'Berlin', 'Nairobi', 'Rio', 'Denver'];
+
+  
 
   // SELECCIONADO DE RATING LINEA 16-34
   autoTicks = false;
@@ -41,8 +43,9 @@ export class CrudTrailersComponent implements OnInit {
 
   firstFormGroup:FormGroup = this._formBuilder.group({
     id: '',
-    nombre: 'default',
-    apellido: 'default'
+    nombre: '',
+    apellido: '',
+    token: ''
   });
 
   nuevoActor:FormGroup = new FormGroup({
@@ -68,22 +71,36 @@ export class CrudTrailersComponent implements OnInit {
     year_trailer: ['', [Validators.required]],
     cover: ['', [Validators.required]],
     link: ['', [Validators.required]],
-    rating: ['', [Validators.required]]
+    rating: ['', [Validators.required]],
   });
   stepperOrientation: Observable<StepperOrientation>;
-
-  constructor(private api:ApiService ,private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver) {
+  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
+    
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
-
    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+      let token = localStorage.getItem("token");
+      this.firstFormGroup.patchValue({
+        'token':token
+      });
+    }
 
-  evento(){
-    console.log(this.firstFormGroup);
-    console.log(this.secondFormGroup);
-  }
+    onSubmit() {
+      this.api.postActor({
+        id: 0,
+        nameActor: this.firstFormGroup.value.nombre,
+        lastName: this.firstFormGroup.value.apellido,
+      })
+      .subscribe(respuesta =>{
+        console.log("Todo Bien")
+      })
+    }
+
+    evento(){
+      // console.log(this.firstFormGroup);
+      // console.log(this.secondFormGroup);
+    }
 }
