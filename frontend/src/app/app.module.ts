@@ -10,7 +10,7 @@ import { HomeModule } from './modules/home/home.module';
 // import { FooterComponent } from './core/footer/footer.component';//importamos el footer para su acceso
 // import { HeaderComponent } from './core/header/header.component';//importamos el header para su acceso
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';//de angular material
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -24,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule, 
+    FormsModule 
     // FooterComponent,
     // HeaderComponent
   ],

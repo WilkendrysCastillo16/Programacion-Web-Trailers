@@ -30,4 +30,8 @@ export class ApiService {
     return this._http.get(this.hostApi +'api/trailleractor/completo');
   }
 
+  postLogin(form: ILogin): Observable<ILoginResponse>{
+    return this._http.post<ILoginResponse>(this.hostApi + 'api/LoginAdmin/Login', form);
+  }
+
 }
