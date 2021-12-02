@@ -21,12 +21,15 @@ export class PrincipalComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private api:ApiService) { }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DetallesComponent);
+  onDetails(trailer:ITraillerActor) {
+    // const dialogRef = this.dialog.open(DetallesComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+    const dialogConfig= new MatDialogConfig();
+    dialogConfig.data = { trailer };
+    const dialogAdmin = this.dialog.open(DetallesComponent, dialogConfig);
   }
   openAdmin(){
     // const dialogConfig= new MatDialogConfig();
