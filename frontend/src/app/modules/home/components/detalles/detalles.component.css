@@ -48,3 +48,11 @@ p {
 /* .btn-delete {
   background-color: #09bc8a;
 } */
+
+.p-actores {
+  /* align-items: center;
+  justify-content: center; */
+  /* display: inline-block; */
+  /* white-space: nowrap; */
+  text-align: center;
+}

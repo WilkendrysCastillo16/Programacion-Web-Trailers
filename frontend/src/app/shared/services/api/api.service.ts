@@ -35,6 +35,10 @@ export class ApiService {
   postActor(actor: IActor): Observable<IActor>{
     return this._http.post<IActor>(this.hostApi+'api/actors', actor)
   }
+  
+  postLogin(form: ILogin): Observable<ILoginResponse>{
+    return this._http.post<ILoginResponse>(this.hostApi + 'api/LoginAdmin/Login', form);
+  }
 
 
   //PUT
