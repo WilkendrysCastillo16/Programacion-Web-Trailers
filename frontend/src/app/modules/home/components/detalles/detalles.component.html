@@ -1,8 +1,8 @@
 <div class="container-dialog">
     <h2 mat-dialog-title>{{detalle.trailer.trailler.title}}</h2><!-- TITULO -->
     <mat-dialog-content class="mat-typography">
-        <iframe width="560" height="315" [src]="detalle.trailer.trailler.link" title="YouTube video player"
-            frameborder="0"
+        <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(detalle.trailer.trailler.link)"
+            title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
         <br>
@@ -30,7 +30,7 @@
         <button mat-mini-fab aria-label="icon button edit" class="btn-edit">
             <mat-icon>edit</mat-icon>
         </button>
-        <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onHome()">
+        <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onClose()">
             <mat-icon>home</mat-icon>
         </button>
         <button mat-mini-fab color="warn" aria-label="icon button delete" class="btn-delete">
