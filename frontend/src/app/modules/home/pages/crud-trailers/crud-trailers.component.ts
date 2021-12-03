@@ -8,6 +8,10 @@ import {map} from 'rxjs/operators';
 import { IActor } from '../../interfaces/actor';
 import { ITrailer } from '../../interfaces/trailer';
 
+import Swal from 'sweetalert2';
+
+
+
 @Component({
   selector: 'app-crud-trailers',
   templateUrl: './crud-trailers.component.html',
@@ -57,6 +61,8 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postActor(form).subscribe(data => {
       console.log(data);
     })
+    Swal.fire("Good job!", "El actor fue creado correctamente!", "success");
+
   }
 
   secondFormGroup:FormGroup = this._formBuilder.group({
@@ -84,6 +90,7 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postTrailer(form).subscribe(data =>{
       console.log(data)
     })
+    Swal.fire("Good job!", "El trailer fue creado correctamente!", "success");
   }
 
   stepperOrientation: Observable<StepperOrientation>;

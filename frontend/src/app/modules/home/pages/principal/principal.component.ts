@@ -18,7 +18,6 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 export class PrincipalComponent implements OnInit {
 
   trailerActor:ITraillerActor[]|undefined;
-
   constructor(public dialog: MatDialog, private api:ApiService) { }
 
   onDetails(trailer:ITraillerActor) {

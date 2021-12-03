@@ -13,6 +13,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { CrudTrailersComponent } from './pages/crud-trailers/crud-trailers.component';
 import { HeaderComponent } from 'src/app/core/header/header.component';
 import { FooterComponent } from './../../core/footer/footer.component';
+import { FiltroPipe } from './filtro.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FooterComponent } from './../../core/footer/footer.component';
     DialogComponent,
     CrudTrailersComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FiltroPipe
     // MatStepperModule,
     // MatDatepickerModule,
     // MatSelectModule,
