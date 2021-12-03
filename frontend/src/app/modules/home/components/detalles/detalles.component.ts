@@ -4,6 +4,7 @@ import { ITraillerActor } from '../../interfaces/trailler-actor';
 import { IActor } from './../../interfaces/actor';
 import { PrincipalComponent } from '../../pages/principal/principal.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ApiService } from 'src/app/shared/services/api/api.service';
 
 @Component({
   selector: 'app-detalles',
@@ -15,7 +16,7 @@ export class DetallesComponent implements OnInit {
   trailer!: ITraillerActor;
   actor!: IActor;
 
-  constructor(public sanitizer: DomSanitizer, public dialogRef: MatDialogRef<DetallesComponent>,
+  constructor(public sanitizer: DomSanitizer, public dialogRef: MatDialogRef<DetallesComponent>, private api:ApiService,
     @Inject(MAT_DIALOG_DATA) public detalle: {trailer: ITraillerActor}) { }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class DetallesComponent implements OnInit {
     }
     return false;
   }
+
 
 }
 
