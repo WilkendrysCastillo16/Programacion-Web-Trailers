@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { IActor } from '../../interfaces/actor';
 import { ITrailer } from '../../interfaces/trailer';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-crud-trailers',
@@ -87,7 +88,7 @@ export class CrudTrailersComponent implements OnInit {
   }
 
   stepperOrientation: Observable<StepperOrientation>;
-  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
+  constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<CrudTrailersComponent>, breakpointObserver: BreakpointObserver, private api:ApiService) {
     
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -107,6 +108,10 @@ export class CrudTrailersComponent implements OnInit {
       this.api.getActores().subscribe(x=>{
         this.actorList = x.result;
       })
+    }
+
+    onCancel(){
+      this.dialogRef.close();
     }
 
     evento(){
