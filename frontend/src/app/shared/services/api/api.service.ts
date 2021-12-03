@@ -58,14 +58,16 @@ export class ApiService {
     return this._http.post<ITrailer>(this.hostApi+'api/traillers', trailer, { headers: headers })
   }
 
-
   //PUT
 
   putTraillers(trailer: ITrailer){
-    return this._http.put(this.hostApi+ 'api/traillers', trailer);
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.put(this.hostApi+ 'api/traillers', trailer, { headers: headers });
   }
-
-
 
   //DELETE
   deleteTraillers(id: number): Observable<any>{
