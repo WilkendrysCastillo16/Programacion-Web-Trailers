@@ -74,7 +74,7 @@ export class ApiService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + Token
     })
-    return this._http.delete(this.hostApi+ 'api/traillers?id='+ id, { headers: headers})
+    return this._http.delete(this.hostApi+ 'api/traillers/'+ id, { headers: headers})
   }
 
 }

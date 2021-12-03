@@ -48,6 +48,7 @@ export class PrincipalComponent implements OnInit {
       this.trailerActor?.reverse();
       //console.log(this.trailerActor);
     })
+    
   }
   
   adminExiste(){

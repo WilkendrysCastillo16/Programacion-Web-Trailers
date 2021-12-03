@@ -34,7 +34,7 @@
         <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onClose()">
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete" class="btn-delete">
+        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete" (click)="deleteTrailler()" class="btn-delete">
             <mat-icon>delete</mat-icon>
         </button>
     </mat-dialog-actions>

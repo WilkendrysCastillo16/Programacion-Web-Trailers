@@ -85,6 +85,10 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postTrailer(form).subscribe(data =>{
       console.log(data)
     })
+    setTimeout(() => 
+    {
+      location.reload();
+    },400);
   }
 
   stepperOrientation: Observable<StepperOrientation>;
