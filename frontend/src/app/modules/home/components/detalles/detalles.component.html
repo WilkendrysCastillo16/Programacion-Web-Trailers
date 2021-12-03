@@ -1,5 +1,5 @@
 <div class="container-dialog">
-    <h2 mat-dialog-title>{{detalle.trailer.trailler.title}}</h2><!-- TITULO -->
+    <h2 mat-dialog-title>{{detalle.trailer.trailler.title | titlecase}}</h2><!-- TITULO -->
     <mat-dialog-content class="mat-typography">
         <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(detalle.trailer.trailler.link)"
             title="YouTube video player" frameborder="0"
@@ -35,7 +35,8 @@
         <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onClose()">
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete" (click)="deleteTrailler()" class="btn-delete">
+        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete"
+            (click)="deleteTrailler()" class="btn-delete">
             <mat-icon>delete</mat-icon>
         </button>
     </mat-dialog-actions>
