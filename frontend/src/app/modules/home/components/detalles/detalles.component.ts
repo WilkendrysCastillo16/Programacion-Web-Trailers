@@ -5,8 +5,6 @@ import { IActor } from './../../interfaces/actor';
 import { PrincipalComponent } from '../../pages/principal/principal.component';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
-
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -29,6 +27,12 @@ export class DetallesComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  adminExiste(){
+    if(localStorage.getItem("Token")){
+      return true;
+    }
+    return false;
+  }
 
 }
 

@@ -28,13 +28,13 @@
     </mat-dialog-content>
     <mat-dialog-actions align="center" class="cont-button">
         <!-- <button mat-button mat-dialog-close>Cancel</button> -->
-        <button mat-mini-fab aria-label="icon button edit" class="btn-edit">
+        <button mat-mini-fab aria-label="icon button edit" *ngIf="adminExiste()" class="btn-edit">
             <mat-icon>edit</mat-icon>
         </button>
         <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onClose()">
             <mat-icon>home</mat-icon>
         </button>
-        <button mat-mini-fab color="warn" aria-label="icon button delete" class="btn-delete">
+        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete" class="btn-delete">
             <mat-icon>delete</mat-icon>
         </button>
     </mat-dialog-actions>
