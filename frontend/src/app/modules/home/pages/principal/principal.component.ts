@@ -48,7 +48,13 @@ export class PrincipalComponent implements OnInit {
       //console.log(this.trailerActor);
     })
   }
-
+  
+  adminExiste(){
+    if(localStorage.getItem("Token")){
+      return true;
+    }
+    return false;
+  }
 
   // editar(){
   //   const dialogAdmin = this.dialog.open(CrudTrailersComponent);

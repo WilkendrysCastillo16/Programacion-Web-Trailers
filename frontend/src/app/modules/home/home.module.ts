@@ -14,6 +14,7 @@ import { CrudTrailersComponent } from './pages/crud-trailers/crud-trailers.compo
 import { HeaderComponent } from 'src/app/core/header/header.component';
 import { FooterComponent } from './../../core/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     LoginComponent,

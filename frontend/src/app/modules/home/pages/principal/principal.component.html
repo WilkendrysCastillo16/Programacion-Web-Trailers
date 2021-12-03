@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container-principal">
-    <div class="admin">
+    <div class="admin" *ngIf="adminExiste()">
         <button mat-mini-fab color="accent" aria-label="add" class="btn-add" (click)="openAdmin()">
             <mat-icon>add_to_queue</mat-icon>
         </button>

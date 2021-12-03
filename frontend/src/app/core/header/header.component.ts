@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,21 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { 
+  emailAdmin = localStorage.getItem("Email"); 
+  constructor(private router:Router) { 
   }
 
-
   ngOnInit(): void {
-
     const toggleButton = document.getElementsByClassName('toggle-button')[0]
     const navbarActive = document.getElementsByClassName('navbar-links')[0]
 
-    
     toggleButton.addEventListener('click', () => {
       navbarActive.classList.toggle('active')
     })
 
+  }
+
+  exists(){
+    if(localStorage.getItem("Token")){
+      return false;
+    }
+    else{
+      return true;
+    }
 
   }
+
 
 }
