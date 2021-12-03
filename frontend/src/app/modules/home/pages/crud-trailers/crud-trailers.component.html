@@ -3,7 +3,7 @@
     <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" linear #stepper>
         <mat-step [stepControl]="firstFormGroup" label="A&ntilde;adir Actores" [optional]="false" [editable]="false"
             class="titulo-actores">
-            <form [formGroup]="nuevoActor" (ngSubmit)="postActor(nuevoActor.value)" class="form-actores" >
+            <form [formGroup]="nuevoActor" (ngSubmit)="postActor(nuevoActor.value)" class="form-actores">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label class="lbl-nombre">Nombre</mat-label>
                     <input matInput formControlName="nameActor" placeholder="Ex. Elian">
@@ -14,9 +14,10 @@
                 </mat-form-field>
                 <div>
                     <!-- <button mat-button matStepperNext (click)="evento()">Next</button> -->
-                    <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
-                    <button mat-stroked-button color="accent" class="btn-save" type="submit" >Save</button>
-                    <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next" type="button">Next</button>
+                    <button mat-stroked-button color="warn" class="btn-cancel" (click)="onCancel()">Cancel</button>
+                    <button mat-stroked-button color="accent" class="btn-save" type="submit">Save</button>
+                    <button mat-stroked-button matStepperNext (click)="evento()" type="button"
+                        class="btn-next">Next</button>
                 </div>
             </form>
         </mat-step>
@@ -58,7 +59,8 @@
                                 (+{{actores.value.length - 1}} {{actores.value?.length === 2 ? 'other' : 'others'}})
                             </span>
                         </mat-select-trigger>
-                        <mat-option *ngFor="let actor of actorList" [value]="actor">{{actor.nameActor +" "+ actor.lastName}}</mat-option>
+                        <mat-option *ngFor="let actor of actorList" [value]="actor">{{actor.nameActor +" "+
+                            actor.lastName}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field color="accent" appearance="fill" class="fecha-rating">
@@ -79,8 +81,9 @@
                     aria-labelledby="example-name-label">
                 </mat-slider>
                 <div>
-                    <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
-                    <button mat-stroked-button color="accent" (click)="evento()" type="submit" class="btn-save">Save</button>
+                    <button mat-stroked-button color="warn" class="btn-cancel" (click)="onCancel()">Cancel</button>
+                    <button mat-stroked-button color="accent" (click)="evento()" type="submit"
+                        class="btn-save">Save</button>
                     <!-- <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next">Next</button> -->
                 </div>
             </form>

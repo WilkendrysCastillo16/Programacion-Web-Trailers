@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { IActor } from '../../interfaces/actor';
 import { ITrailer } from '../../interfaces/trailer';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import Swal from 'sweetalert2';
 
@@ -91,10 +92,14 @@ export class CrudTrailersComponent implements OnInit {
       console.log(data)
     })
     Swal.fire("Good job!", "El trailer fue creado correctamente!", "success");
+    setTimeout(() => 
+    {
+      location.reload();
+    },400);
   }
 
   stepperOrientation: Observable<StepperOrientation>;
-  constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
+  constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<CrudTrailersComponent>, breakpointObserver: BreakpointObserver, private api:ApiService) {
     
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -113,7 +118,16 @@ export class CrudTrailersComponent implements OnInit {
 
       this.api.getActores().subscribe(x=>{
         this.actorList = x.result;
+        this.actorList = this.actorList.sort(function (a, b){
+          if ( a.nameActor < b.nameActor ) return -1;
+          if ( a.nameActor > b.nameActor ) return 1;
+          return 0;
+        })
       })
+    }
+
+    onCancel(){
+      this.dialogRef.close();
     }
 
     evento(){

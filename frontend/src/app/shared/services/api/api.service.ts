@@ -69,7 +69,12 @@ export class ApiService {
 
   //DELETE
   deleteTraillers(id: number): Observable<any>{
-    return this._http.delete(this.hostApi+ 'api/traillers?id='+ id,{responseType: 'text' })
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.delete(this.hostApi+ 'api/traillers/'+ id, { headers: headers})
   }
 
 }

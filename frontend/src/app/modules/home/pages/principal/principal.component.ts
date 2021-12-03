@@ -44,8 +44,10 @@ export class PrincipalComponent implements OnInit {
     this.api.getTraillerActor().subscribe(x=>{
       // console.log(x)
       this.trailerActor = x.result;
+      this.trailerActor?.reverse();
       //console.log(this.trailerActor);
     })
+    
   }
   
   adminExiste(){
