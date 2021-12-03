@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
       navbarActive.classList.toggle('active')
     })
 
+
   }
 
   exists(){

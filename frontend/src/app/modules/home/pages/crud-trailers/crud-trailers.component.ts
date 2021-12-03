@@ -10,6 +10,10 @@ import { ITrailer } from '../../interfaces/trailer';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITraillerActor } from '../../interfaces/trailler-actor';
 
+import Swal from 'sweetalert2';
+
+
+
 @Component({
   selector: 'app-crud-trailers',
   templateUrl: './crud-trailers.component.html',
@@ -60,6 +64,8 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postActor(form).subscribe(data => {
       console.log(data);
     })
+    Swal.fire("Good job!", "El actor fue creado correctamente!", "success");
+
   }
 
   secondFormGroup:FormGroup = this._formBuilder.group({
@@ -90,6 +96,11 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postTrailer(form).subscribe(data =>{
       console.log(data)
     })
+    Swal.fire("Good job!", "El trailer fue creado correctamente!", "success");
+    setTimeout(() => 
+    {
+      location.reload();
+    },400);
   }
 
   stepperOrientation: Observable<StepperOrientation>;
@@ -112,6 +123,11 @@ export class CrudTrailersComponent implements OnInit {
 
       this.api.getActores().subscribe(x=>{
         this.actorList = x.result;
+        this.actorList = this.actorList.sort(function (a, b){
+          if ( a.nameActor < b.nameActor ) return -1;
+          if ( a.nameActor > b.nameActor ) return 1;
+          return 0;
+        })
       })
 
       if (this.editar){
