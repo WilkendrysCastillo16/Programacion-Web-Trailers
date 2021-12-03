@@ -21,7 +21,7 @@
             </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup" label="A&ntilde;adir Trailler" [editable]="false">
-            <form [formGroup]="secondFormGroup">
+            <form [formGroup]="nuevoTrailer" (ngSubmit)="postTrailer(nuevoTrailer.value)">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Titulo</mat-label>
                     <input matInput formControlName="title" placeholder="Ex. La casa de papel" required>
@@ -58,7 +58,7 @@
                                 (+{{actores.value.length - 1}} {{actores.value?.length === 2 ? 'other' : 'others'}})
                             </span>
                         </mat-select-trigger>
-                        <mat-option *ngFor="let actor of actorList" [value]="actor">{{actor}}</mat-option>
+                        <mat-option *ngFor="let actor of actorList" [value]="actor">{{actor.nameActor +" "+ actor.lastName}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field color="accent" appearance="fill" class="fecha-rating">
@@ -80,7 +80,7 @@
                 </mat-slider>
                 <div>
                     <button mat-stroked-button color="warn" class="btn-cancel">Cancel</button>
-                    <button mat-stroked-button color="accent" (click)="evento()" class="btn-save">Save</button>
+                    <button mat-stroked-button color="accent" (click)="evento()" type="submit" class="btn-save">Save</button>
                     <!-- <button mat-stroked-button matStepperNext (click)="evento()" class="btn-next">Next</button> -->
                 </div>
             </form>

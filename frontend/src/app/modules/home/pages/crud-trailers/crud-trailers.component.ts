@@ -6,6 +6,7 @@ import {StepperOrientation} from '@angular/material/stepper';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import { IActor } from '../../interfaces/actor';
+import { ITrailer } from '../../interfaces/trailer';
 
 @Component({
   selector: 'app-crud-trailers',
@@ -16,7 +17,7 @@ export class CrudTrailersComponent implements OnInit {
   //isOptional = false;
   // SELECCIONADO DE ACTORES LINEA 16-17
   actores = new FormControl();
-  actorList: string[] = ['Tokio', 'Profesor', 'Berlin', 'Nairobi', 'Rio', 'Denver'];
+  actorList:IActor[]=[];
 
   
 
@@ -58,7 +59,6 @@ export class CrudTrailersComponent implements OnInit {
     })
   }
 
-
   secondFormGroup:FormGroup = this._formBuilder.group({
     idTrailer: '',
     title: ['', [Validators.required]],
@@ -69,6 +69,22 @@ export class CrudTrailersComponent implements OnInit {
     link: ['', [Validators.required]],
     rating: ['', [Validators.required]],
   });
+
+  nuevoTrailer = new FormGroup({
+    title: new FormControl(''),
+    director: new FormControl(''),
+    review: new FormControl(''),
+    yearTrailer: new FormControl(''),
+    cover: new FormControl(''),
+    link: new FormControl(''),
+    rating: new FormControl('')
+  })
+
+  postTrailer(form: ITrailer){
+    this.api.postTrailer(form).subscribe(data =>{
+      console.log(data)
+    })
+  }
 
   stepperOrientation: Observable<StepperOrientation>;
   constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver, private api:ApiService) {
@@ -83,6 +99,14 @@ export class CrudTrailersComponent implements OnInit {
       this.firstFormGroup.patchValue({
         'Token': Token
       });
+      this.secondFormGroup.patchValue({
+        'Token': Token
+      })
+
+
+      this.api.getActores().subscribe(x=>{
+        this.actorList = x.result;
+      })
     }
 
     evento(){
