@@ -111,6 +111,11 @@ export class CrudTrailersComponent implements OnInit {
 
       this.api.getActores().subscribe(x=>{
         this.actorList = x.result;
+        this.actorList = this.actorList.sort(function (a, b){
+          if ( a.nameActor < b.nameActor ) return -1;
+          if ( a.nameActor > b.nameActor ) return 1;
+          return 0;
+        })
       })
     }
 
