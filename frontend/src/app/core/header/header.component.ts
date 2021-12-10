@@ -1,3 +1,4 @@
+import { FilterService } from './../../shared/filter/filter.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,8 +9,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  filtro: string = "";
+
   emailAdmin = localStorage.getItem("Email"); 
-  constructor(private router:Router) { 
+  constructor(private router:Router, private filter:FilterService) { 
   }
 
   ngOnInit(): void {
@@ -31,6 +34,10 @@ export class HeaderComponent implements OnInit {
       return true;
     }
 
+  }
+
+  emitirBusqueda(){
+    this.filter.event.emit(this.filtro);
   }
 
 
