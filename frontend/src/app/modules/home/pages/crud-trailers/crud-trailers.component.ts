@@ -13,9 +13,6 @@ import { ITraillerActorRela } from '../../interfaces/ITraillerActorR';
 import Swal from 'sweetalert2';
 
 
-
-
-
 @Component({
   selector: 'app-crud-trailers',
   templateUrl: './crud-trailers.component.html',
@@ -27,6 +24,7 @@ export class CrudTrailersComponent implements OnInit {
   // actores = new FormControl();
   actorList: IActor[] = [];
   trailer!: ITrailer;
+  traillerActor: ITraillerActorRela[] = [];
 
   // SELECCIONADO DE RATING LINEA 16-34
   autoTicks = false;
@@ -76,6 +74,12 @@ export class CrudTrailersComponent implements OnInit {
     actores: new FormControl('')
   })
 
+  traillerActorRela: ITraillerActorRela = ({
+    id: 0,
+    idTrailler: 0,
+    idActor: 0
+  });
+
   stepperOrientation: Observable<StepperOrientation>;
   constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<CrudTrailersComponent>, breakpointObserver: BreakpointObserver, private api: ApiService, @Inject(MAT_DIALOG_DATA) public editar: ITraillerActor) {
     
@@ -122,7 +126,6 @@ export class CrudTrailersComponent implements OnInit {
         })
       })
     }
-
     // console.log(this.onEdit());
   }
 
@@ -135,17 +138,60 @@ export class CrudTrailersComponent implements OnInit {
     console.log(this.secondFormGroup);
   }
 
-  traillerActorRela: ITraillerActorRela = ({
-    id: 0,
-    idTrailler: 0,
-    idActor: 0
-  });
+  // buscarTraillerActor(idTrailler:number, idActor:number){
+  //   this.api.getTraillerActorId().subscribe(data =>{
+  //     for(let i = 0; i< data.result.length; i++){
+  //       if(data.result[i].idTrailler == idTrailler && data.result[i].idActor == idActor){
+  //         this.traillerActorRela.id = data.result[i].id;
+  //         break;
+  //       }
+  //     }
+  //   });
+  // }
+
   postTrailer(form: any) {
-    
     if (this.editar) {
-      this.api.putTraillers(form).subscribe(data => {
-        console.log(data)
-      });
+      // let idTraillerR = 0; 
+      // // this.buscarTraillerActor(form.idTrailer, form.actores[0].id);
+      // // console.log(this.traillerActorRela.id);
+      // this.api.putTraillers(form).subscribe(data => {
+      //   idTraillerR = data.result.id;
+      //   for (let i = 0; i < this.actorList.length; i++) {
+      //     for (let j = 0; j < form.actores.length; j++) {
+      //       if (form.actores[j].nameActor == this.actorList[i].nameActor && form.actores[j].lastName == this.actorList[i].lastName) {
+      //         this.traillerActorRela.idTrailler = idTraillerR; //ID del trailler que se va a actualizar
+      //         this.traillerActorRela.idActor = this.actorList[i].id; //ID del actor que se encontro selecionado
+      //         //Buscara el ID de la relacion existente entre los dos ID encontrado anteriormente
+      //         this.api.getTraillerActorId().subscribe(res =>{
+
+      //           console.log(this.traillerActorRela.id);
+      //           console.log(this.traillerActorRela.idTrailler);
+      //           console.log(this.traillerActorRela.idActor);
+      //           for(let k = 0; k< res.result.length; k++){
+      //             // if(res.result[k].idTrailler == idTraillerR && res.result[k].idActor == this.actorList[i].id){
+      //             //   // this.traillerActorRela.id = res.result[k].id;
+      //             //   // console.log(this.traillerActorRela);
+
+      //             //   console.log(res.result[k].id);
+      //             //   console.log(res.result[k].idTrailler);
+      //             //   console.log(res.result[k].idActor);
+      //             // }
+      //           }
+      //         });           
+      //         // this.api.putTraillerActor(this.traillerActorRela).subscribe(data => {
+      //         //   console.log(data);
+      //         // })
+      //       }
+      //     }
+      //   }  
+      // });
+      // setTimeout(() =>  { location.reload(); },500); 
+      // Swal.fire({
+      //   icon: 'success',
+      //   title: 'Trailler actualizado correctamente',
+      //   showConfirmButton: false,
+      //   timer: 1000
+      // })
     }
     else {
       let idTraillerR = 0;
@@ -166,10 +212,7 @@ export class CrudTrailersComponent implements OnInit {
           }
         }        
       });
-      setTimeout(() => 
-      {
-        location.reload();
-      },500); 
+      setTimeout(() => { location.reload(); },500); 
       Swal.fire({
         icon: 'success',
         title: 'Trailler agregado correctamente',

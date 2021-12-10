@@ -35,6 +35,10 @@ export class ApiService {
     return this._http.get(this.hostApi +'api/trailleractor/completo');
   }
 
+  getTraillerActorId(): Observable<any>{
+    return this._http.get<any>(this.hostApi +'api/trailleractor');
+  }
+
   //POST
 
   postActor(actor: IActor): Observable<IActor>{
@@ -69,13 +73,22 @@ export class ApiService {
   }
 
   //PUT
-  putTraillers(trailer: ITrailer){
+  putTraillers(trailer: any): Observable<any>{
     let Token = localStorage.getItem("Token");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + Token
     })
-    return this._http.put(this.hostApi+ 'api/traillers', trailer, { headers: headers });
+    return this._http.put(this.hostApi+ 'api/traillers/' + trailer.idTrailer, trailer, { headers: headers });
+  }
+
+  putTraillerActor(traillerActorRela: ITraillerActorRela): Observable<any>{
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.put<ITraillerActorRela>(this.hostApi+'api/trailleractor/'+traillerActorRela.id, traillerActorRela, { headers: headers })
   }
 
   //DELETE

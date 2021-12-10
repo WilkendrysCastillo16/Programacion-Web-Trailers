@@ -67,12 +67,13 @@ export class DetallesComponent implements OnInit {
         setTimeout(() => 
         {
           location.reload();
-        },400);
-        Swal.fire(
-          'Deleted!',
-          'El trailer ha sido eliminado.',
-          'success'
-        )
+        },500);
+        Swal.fire({
+          icon: 'success',
+          title: 'Trailler eliminado correctamente',
+          showConfirmButton: false,
+          timer: 1000
+        }) 
       }else{
         Swal.fire("No se elimino el trailer!");
       }
