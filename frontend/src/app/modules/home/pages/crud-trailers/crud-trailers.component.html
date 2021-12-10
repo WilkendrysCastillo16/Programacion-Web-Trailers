@@ -52,7 +52,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="multiple-actores">
                     <mat-label>Actores</mat-label>
-                    <mat-select formControlName="actores" multiple>
+                    <mat-select id="selectorActores" formControlName="actores" multiple>
                         <mat-select-trigger>
                             {{nuevoTrailer.value ? nuevoTrailer.value[0] : ''}}
                             <span *ngIf="nuevoTrailer.value?.length > 1" class="example-additional-selection">
@@ -66,7 +66,7 @@
                 </mat-form-field>
                 <mat-form-field color="accent" appearance="fill" class="fecha-rating">
                     <mat-label>Fecha de Lanzamiento</mat-label>
-                    <input matInput formControlName="year_trailer" [matDatepicker]="picker1">
+                    <input matInput formControlName="yearTrailer" [matDatepicker]="picker1">
                     <mat-datepicker-toggle matSuffix [for]="picker1">
                     </mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
