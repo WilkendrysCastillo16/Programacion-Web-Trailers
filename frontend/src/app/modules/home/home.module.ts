@@ -14,7 +14,7 @@ import { CrudTrailersComponent } from './pages/crud-trailers/crud-trailers.compo
 import { HeaderComponent } from 'src/app/core/header/header.component';
 import { FooterComponent } from './../../core/footer/footer.component';
 import { FiltroPipe } from './filtro.pipe';
-
+import { PipefirstPipe } from 'src/app/shared/pipes/pipefirst.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { FiltroPipe } from './filtro.pipe';
     CrudTrailersComponent,
     HeaderComponent,
     FooterComponent,
-    FiltroPipe
+    FiltroPipe,
+    PipefirstPipe
     // MatStepperModule,
     // MatDatepickerModule,
     // MatSelectModule,

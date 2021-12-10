@@ -3,7 +3,7 @@
 
   <div class="navbar-links">
     <ul>
-      <li><input type="search" placeholder="Filtrar"></li>
+      <li><input type="search" placeholder="Filtrar" [(ngModel)]="filtro" (keyup)="emitirBusqueda()"></li>
       <li *ngIf="!exists()">
         <p>{{emailAdmin}}</p>
       </li>
