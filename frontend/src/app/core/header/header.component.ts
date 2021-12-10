@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   emailAdmin = localStorage.getItem("Email"); 
   constructor(private router:Router) { 
   }
-
+ 
   ngOnInit(): void {
     const toggleButton = document.getElementsByClassName('toggle-button')[0]
     const navbarActive = document.getElementsByClassName('navbar-links')[0]
