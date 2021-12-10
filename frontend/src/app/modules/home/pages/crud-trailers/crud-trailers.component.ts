@@ -142,8 +142,6 @@ export class CrudTrailersComponent implements OnInit {
         return 0;
       })
     })
-    console.log(this.firstFormGroup);
-    console.log(this.secondFormGroup);
   }
 
   // buscarTraillerActor(idTrailler:number, idActor:number){
