@@ -212,7 +212,7 @@ export class CrudTrailersComponent implements OnInit {
           }
         }        
       });
-      setTimeout(() => { location.reload(); },500); 
+      setTimeout(() => { location.reload(); },700); 
       Swal.fire({
         icon: 'success',
         title: 'Trailler agregado correctamente',
