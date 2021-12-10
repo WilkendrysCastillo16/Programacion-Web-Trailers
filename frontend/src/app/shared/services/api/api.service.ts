@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ITraillerActor } from 'src/app/modules/home/interfaces/trailler-actor';
 import { ILoginResponse } from 'src/app/modules/home/interfaces/login-response';
+import { ITraillerActorRela } from 'src/app/modules/home/interfaces/ITraillerActorR';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class ApiService {
     return this._http.post<ILoginResponse>(this.hostApi + 'api/LoginAdmin/Login', form);
   }
 
-  postTrailer(trailer: ITrailer): Observable<ITrailer>{
+  postTrailer(trailer: ITrailer): Observable<any>{
     let Token = localStorage.getItem("Token");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -58,14 +59,24 @@ export class ApiService {
     return this._http.post<ITrailer>(this.hostApi+'api/traillers', trailer, { headers: headers })
   }
 
-
-  //PUT
-
-  putTraillers(trailer: ITrailer){
-    return this._http.put(this.hostApi+ 'api/traillers', trailer);
+  postTraillerActor(traillerActorRela: ITraillerActorRela): Observable<any>{
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.post<ITraillerActorRela>(this.hostApi+'api/trailleractor', traillerActorRela, { headers: headers })
   }
 
-
+  //PUT
+  putTraillers(trailer: ITrailer){
+    let Token = localStorage.getItem("Token");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + Token
+    })
+    return this._http.put(this.hostApi+ 'api/traillers', trailer, { headers: headers });
+  }
 
   //DELETE
   deleteTraillers(id: number): Observable<any>{

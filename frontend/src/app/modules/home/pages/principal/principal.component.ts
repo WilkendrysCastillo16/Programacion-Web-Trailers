@@ -9,16 +9,21 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 //import { MatDialogRef } from '@angular/material/dialog';
+import { PipefirstPipe } from 'src/app/shared/pipes/pipefirst.pipe';
+import { FilterService } from 'src/app/shared/filter/filter.service';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
-  styleUrls: ['./principal.component.css']
+  styleUrls: ['./principal.component.css'],
+  providers: [FilterService]
 })
 export class PrincipalComponent implements OnInit {
 
+  buscar: string = "";
+
   trailerActor:ITraillerActor[]|undefined;
-  constructor(public dialog: MatDialog, private api:ApiService) { }
+  constructor(public dialog: MatDialog, private api:ApiService, private busqueda:FilterService) { }
 
   onDetails(trailer:ITraillerActor) {
     // const dialogRef = this.dialog.open(DetallesComponent);
@@ -47,7 +52,9 @@ export class PrincipalComponent implements OnInit {
       this.trailerActor?.reverse();
       //console.log(this.trailerActor);
     })
-    
+    this.busqueda.event.subscribe(busca=>{
+      this.buscar= busca;
+    })
   }
   
   adminExiste(){

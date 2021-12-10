@@ -1,5 +1,7 @@
+import { ITrailer } from './../../interfaces/trailer';
+import { CrudTrailersComponent } from './../../pages/crud-trailers/crud-trailers.component';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITraillerActor } from '../../interfaces/trailler-actor';
 import { IActor } from './../../interfaces/actor';
 import { PrincipalComponent } from '../../pages/principal/principal.component';
@@ -21,7 +23,7 @@ export class DetallesComponent implements OnInit {
   trailer!: ITraillerActor;
   actor!: IActor;
 
-  constructor(public sanitizer: DomSanitizer, public dialogRef: MatDialogRef<DetallesComponent>, private api:ApiService,
+  constructor(private dialog: MatDialog,public sanitizer: DomSanitizer, public dialogRef: MatDialogRef<DetallesComponent>, private api:ApiService,
     @Inject(MAT_DIALOG_DATA) public detalle: {trailer: ITraillerActor}, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,6 +40,14 @@ export class DetallesComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  onEdit(trailer:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = trailer;
+    this.dialog.open(CrudTrailersComponent, dialogConfig);
+    this.dialogRef.close();
+    console.log(trailer);
   }
 
   deleteTrailler(){
@@ -67,7 +77,6 @@ export class DetallesComponent implements OnInit {
         Swal.fire("No se elimino el trailer!");
       }
     });
-    
   }
 
 }

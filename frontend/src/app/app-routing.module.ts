@@ -15,11 +15,11 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   //{path:'prueba',component:NavComponent,canActivate:[GuardfirstGuard]},
   //{path:'detalles',component:DetallesComponent,canActivate:[GuardfirstGuard]},
-  {path:'detalles',component:DetallesComponent},
+  // {path:'detalles',component:DetallesComponent},
   {path:'principal',component:PrincipalComponent},
   //{path:'header',component:HeaderComponent},
   {path:'equipo', component:EquipoComponent},
-  {path:'trailers', component:CrudTrailersComponent},
+  // {path:'trailers', component:CrudTrailersComponent},
   {path:'**',redirectTo:'principal', pathMatch:'full'}
 ];
 
