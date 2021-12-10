@@ -240,7 +240,14 @@ export class CrudTrailersComponent implements OnInit {
     this.api.postActor(form).subscribe(data => {
       console.log(data);
     })
-    Swal.fire("Good job!", "El actor fue creado correctamente!", "success");
+    Swal.fire({
+        icon: 'success',
+        title: 'Actor agregado correctamente',
+        showConfirmButton: false,
+        timer: 1000
+      })
+      this.nuevoActor.controls['nameActor'].setValue('');
+      this.nuevoActor.controls['lastName'].setValue('');
   }
 
   onEdit() {
