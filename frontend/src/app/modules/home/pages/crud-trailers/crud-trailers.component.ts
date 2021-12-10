@@ -12,10 +12,6 @@ import { ITraillerActor } from '../../interfaces/trailler-actor';
 import { ITraillerActorRela } from '../../interfaces/ITraillerActorR';
 import Swal from 'sweetalert2';
 
-
-
-
-
 @Component({
   selector: 'app-crud-trailers',
   templateUrl: './crud-trailers.component.html',
@@ -208,10 +204,10 @@ export class CrudTrailersComponent implements OnInit {
     this.nuevoTrailer.controls['yearTrailer'].setValue(this.editar.trailler.yearTrailer);
     this.nuevoTrailer.controls['cover'].setValue(this.editar.trailler.cover);
     this.nuevoTrailer.controls['link'].setValue(this.editar.trailler.link);
+    this.value = this.editar.trailler.rating;
     this.nuevoTrailer.controls['rating'].setValue(this.editar.trailler.rating);
     this.nuevoTrailer.controls['actores'].setValue(this.editar.actor);
 
   }
 
 }
-
