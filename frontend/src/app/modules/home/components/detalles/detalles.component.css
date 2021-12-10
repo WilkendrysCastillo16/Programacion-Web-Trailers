@@ -29,6 +29,7 @@ h3 {
 p {
   color: #508991;
   text-align: center;
+  max-width: 550px;
 }
 
 .star-value {

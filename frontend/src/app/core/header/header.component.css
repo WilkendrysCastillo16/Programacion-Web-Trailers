@@ -1,3 +1,13 @@
+.input-filter {
+  background-color: #508991;
+  color: #172a3a;
+  border: none;
+  border-color: #172a3a;
+  padding-left: 10px;
+}
+.input-filter::placeholder {
+  color: #172a3a;
+}
 * a[href] {
   text-decoration: none;
   font-weight: bold;
@@ -12,8 +22,6 @@
   background-color: #004346;
   color: #75dddd;
 }
-
-
 
 .brand-title {
   font-size: 35px;
@@ -57,7 +65,7 @@
   margin-right: 10px;
 }
 
-.navbar-links li p{
+.navbar-links li p {
   width: 95px;
   /* white-space: nowrap; */
   text-overflow: ellipsis;
