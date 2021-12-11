@@ -107,6 +107,8 @@ export class CrudTrailersComponent implements OnInit {
           if (a.nameActor > b.nameActor) return 1;
           return 0;
         })
+        this.actorList = [... new Set(this.actorList)];
+
         for (let i = 0; i < this.actorList.length; i++) {
           for (let j = 0; j < this.editar.actor.length; j++) {
             if (this.actorList[i].id == this.editar.actor[j].id) {
@@ -124,6 +126,7 @@ export class CrudTrailersComponent implements OnInit {
           if (a.nameActor > b.nameActor) return 1;
           return 0;
         })
+        this.actorList = [... new Set(this.actorList)];
       })
     }
     // console.log(this.onEdit());
@@ -141,6 +144,7 @@ export class CrudTrailersComponent implements OnInit {
         if (a.nameActor > b.nameActor) return 1;
         return 0;
       })
+      this.actorList = [... new Set(this.actorList)];
     })
   }
 
