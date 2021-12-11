@@ -1,0 +1,16 @@
+<div class="login">
+    <div class="login-container">
+        <div class="login-info-container">
+            <br /><br /><br /><br />
+            <h1 class="title">Log in with</h1>
+            <br />
+            <form class="inputs-container" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+                <input class="input" [(ngModel)]="emailAdmin" type="text" placeholder="Username" formControlName="email" />
+                <input class="input" type="password" placeholder="Password" formControlName="pass"/>
+                <!--<input type="submit" class="btnl" value="Login">-->
+                <button type="submit" class="btnl">Login</button>                
+            </form>
+        </div>
+        <img class="image-container" src="assets/images/login.svg" alt="">
+    </div>
+</div>

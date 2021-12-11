@@ -1,0 +1,45 @@
+/* body { */
+/* solucion1 */
+/* display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto; */
+/* solucion 2 */
+/* position: relative;
+  padding-bottom: 3em;
+  min-height: 100vh; */
+/* } */
+
+footer {
+  background-color: #004346;
+  color: #75dddd;
+  /* solucion 2 */
+  /* position: absolute; */
+
+  /* width: 100%;
+  height: 120px;
+  padding-top: 15px; */
+
+  position: relative;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
+footer .p-footer {
+  padding: 40px 0 0 0;
+}
+
+p {
+  text-align: center;
+}
+
+::selection {
+  background: #75dddd; /*Color para el fondo seleccionado*/
+  color: #004346; /* Color  para el texto seleccionado */
+}
+
+* a[href] {
+  text-decoration: none;
+  font-weight: bold;
+  color: #75dddd;
+}

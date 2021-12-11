@@ -1,0 +1,43 @@
+<div class="container-dialog">
+    <h2 mat-dialog-title>{{detalle.trailer.trailler.title | titlecase}}</h2><!-- TITULO -->
+    <mat-dialog-content class="mat-typography">
+        <iframe width="560" height="315" [src]="sanitizer.bypassSecurityTrustResourceUrl(detalle.trailer.trailler.link)"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        <br>
+        <h3>DIRECTOR:</h3>
+        <p>{{detalle.trailer.trailler.director}}</p>
+        <h3>ACTORES:</h3>
+
+        <p *ngFor="let act of detalle.trailer.actor" class="p-actores"> {{act.nameActor}}
+            {{act.lastName}}</p>
+        <!-- &Ntilde; y &ntilde; -->
+        <h3>RESE&Ntilde;A:</h3>
+        <p>
+            {{detalle.trailer.trailler.review}}
+        </p>
+        <h3>A&Ntilde;O:</h3>
+        <p>{{detalle.trailer.trailler.yearTrailer | date:'longDate'}}</p>
+        <h3>VALORACI&Oacute;N:</h3>
+        <p>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" class="star-value"
+                *ngFor="let i of [].constructor(detalle.trailer.trailler.rating)">star</mat-icon>
+        </p>
+        <br>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center" class="cont-button">
+        <!-- <button mat-button mat-dialog-close>Cancel</button> -->
+        <button mat-mini-fab aria-label="icon button edit" *ngIf="adminExiste()" class="btn-edit"
+            (click)="onEdit(detalle.trailer)">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="accent" aria-label="icon button home" class="btn-home" (click)="onClose()">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" *ngIf="adminExiste()" aria-label="icon button delete"
+            (click)="deleteTrailler()" class="btn-delete">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-dialog-actions>
+</div>

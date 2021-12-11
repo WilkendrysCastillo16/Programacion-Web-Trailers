@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div class="brand-title"><a href="/principal">Web Trailers</a></div>
+
+  <div class="navbar-links">
+    <ul>
+      <li><input type="search" placeholder="Filtrar" [(ngModel)]="filtro" (keyup)="emitirBusqueda()"
+          class="input-filter"></li>
+      <li *ngIf="!exists()">
+        <p>{{emailAdmin}}</p>
+      </li>
+      <li *ngIf="exists()"><a class="active" href="/login">Login</a></li>
+      <li *ngIf="!exists()" onclick="localStorage.clear();"><a href="/principal">logout</a></li>
+    </ul>
+  </div>
+</nav>
